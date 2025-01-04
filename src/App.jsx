@@ -99,27 +99,24 @@ const CategoryIcon = ({ category }) => {
   );
 };
 
-const HighlightedText = ({ text, searchTerm, isCurrentMatch }) => {
-  if (!searchTerm || !text) return <span>{text}</span>;
-
-  const parts = text.split(new RegExp(`(${searchTerm})`, 'gi'));
-  return (
-    <span>
-      {parts.map((part, i) => {
-        if (part.toLowerCase() === searchTerm.toLowerCase()) {
-          return (
-            <mark 
-              key={i} 
-              className={`bg-yellow-200 ${isCurrentMatch ? 'ring-2 ring-blue-500' : ''}`}
-            >
-              {part}
-            </mark>
-          );
-        }
-        return part;
-      })}
-    </span>
-  );
+const highlightText = (text, matches) => {
+  if (!matches || matches.length === 0) return text;
+  
+  const segments = [];
+  let lastIndex = 0;
+  
+  matches.forEach(({ start, end }) => {
+    segments.push(text.substring(lastIndex, start));
+    segments.push(
+      <mark key={start} className="bg-yellow-100">
+        {text.substring(start, end)}
+      </mark>
+    );
+    lastIndex = end;
+  });
+  
+  segments.push(text.substring(lastIndex));
+  return segments;
 };
 
 const IndexSection = ({ index, language, onIndexClick }) => {
