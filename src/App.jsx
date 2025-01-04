@@ -129,7 +129,7 @@ const HighlightedText = ({ text, searchTerm, isCurrentMatch }) => {
           return (
             <mark 
               key={i} 
-              className={`bg-yellow-200 ${isCurrentMatch ? 'ring-2 ring-blue-500' : ''}`}
+              className={`${isCurrentMatch ? 'bg-orange-200' : 'bg-yellow-200'}`}
             >
               {part}
             </mark>
