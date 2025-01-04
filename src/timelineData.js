@@ -58,7 +58,7 @@ ne: 'क्यासिनोको मुद्दा'
     },
 data:[
 {
-    "year": "2067/05/23 | २०६७/०५/२३",
+    "year": " २०६७/०५/२३",
     "title": {
         "en": "Happy Hour Multiple Casino License",
         "ne": "ह्याप्पी आवर बहु क्यासिनो अनुमति"
@@ -70,7 +70,7 @@ data:[
     "category": "license"
 },
 {
-    "year": "2070/04/07 | २०७०/०४/०७",
+    "year": "२०७०/०४/०७",
     "title": {
         "en": "Casino Regulation Publication",
         "ne": "क्यासिनो नियमावली प्रकाशन"
