@@ -56,8 +56,21 @@ ne: 'क्यासिनोको मुद्दा'
 "22. VL (Valley Link Pvt. Ltd.)"
       ]
     },
-data:[{
-    "year": "2070 | २०७०",
+data:[[
+{
+    "year": "2067/05/23 | २०६७/०५/२३",
+    "title": {
+        "en": "Happy Hour Multiple Casino License",
+        "ne": "ह्याप्पी आवर बहु क्यासिनो अनुमति"
+    },
+    "description": {
+        "en": "Happy Hour received permission to operate casinos in 10 locations through MOCTCA ministerial decision on Bhadra 23, 2067",
+        "ne": "ह्याप्पी आवरले पर्यटन मन्त्रालयको मन्त्रीस्तरीय निर्णयबाट २०६७ भदौ २३ मा १० स्थानमा क्यासिनो संचालन गर्न अनुमति प्राप्त गरेको"
+    },
+    "category": "license"
+},
+{
+    "year": "2070/04/07 | २०७०/०४/०७",
     "title": {
         "en": "Casino Regulation Publication",
         "ne": "क्यासिनो नियमावली प्रकाशन"
@@ -69,7 +82,7 @@ data:[{
     "category": "regulation"
 },
 {
-    "year": "2070 | २०७०",
+    "year": "2070/04/07 | २०७०/०४/०७",
     "title": {
         "en": "Financial Requirements for Casino Operation",
         "ne": "क्यासिनो संचालनका लागि आर्थिक मापदण्ड"
@@ -79,30 +92,6 @@ data:[{
         "ne": "नियमावलीले चुक्ता पुँजी २५ करोड, रोयल्टी ४ करोड, निवेदन दस्तुर ५ लाख, इजाजत दस्तुर २ करोड, र वार्षिक नवीकरण दस्तुर १ करोड तोकेको"
     },
     "category": "financial"
-},
-{
-    "year": "2067 | २०६७",
-    "title": {
-        "en": "Happy Hour Multiple Casino License",
-        "ne": "ह्याप्पी आवर बहु क्यासिनो अनुमति"
-    },
-    "description": {
-        "en": "Happy Hour received permission to operate casinos in 10 locations through MOCTCA ministerial decision",
-        "ne": "ह्याप्पी आवरले पर्यटन मन्त्रालयको मन्त्रीस्तरीय निर्णयबाट १० स्थानमा क्यासिनो संचालन गर्न अनुमति प्राप्त गरेको"
-    },
-    "category": "license"
-},
-{
-    "year": "2071 | २०७१",
-    "title": {
-        "en": "Casino Closure Decision",
-        "ne": "क्यासिनो बन्द गर्ने निर्णय"
-    },
-    "description": {
-        "en": "Ministry decided to close casinos on 2071/01/05, leading to multiple writ petitions",
-        "ne": "२०७१/०१/०५ मा मन्त्रालयले क्यासिनो बन्द गर्ने निर्णय गरेको, जसका विरुद्ध धेरै रिट निवेदन दायर"
-    },
-    "category": "administrative"
 },
 {
     "year": "2070/71 | २०७०/७१",
@@ -117,7 +106,19 @@ data:[{
     "category": "financial"
 },
 {
-    "year": "2071 | २०७१",
+    "year": "2071/01/05 | २०७१/०१/०५",
+    "title": {
+        "en": "Casino Closure Decision",
+        "ne": "क्यासिनो बन्द गर्ने निर्णय"
+    },
+    "description": {
+        "en": "Ministry decided to close casinos on 2071/01/05, leading to multiple writ petitions",
+        "ne": "२०७१/०१/०५ मा मन्त्रालयले क्यासिनो बन्द गर्ने निर्णय गरेको, जसका विरुद्ध धेरै रिट निवेदन दायर"
+    },
+    "category": "administrative"
+},
+{
+    "year": "2071/04/14 | २०७१/०४/१४",
     "title": {
         "en": "Casino Operators' Legal Challenge",
         "ne": "क्यासिनो संचालकहरूको कानूनी चुनौती"
