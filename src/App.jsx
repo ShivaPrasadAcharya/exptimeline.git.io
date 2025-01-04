@@ -322,43 +322,65 @@ const exportToPDFAsDoc = async (exportLanguage) => {
   if (timelineRef.current) {
     try {
       setIsExporting(true);
+      
       const pdf = new jsPDF('p', 'mm', 'a4');
       const pageWidth = pdf.internal.pageSize.getWidth();
-      const margin = 20;
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      const margin = 15;
+      const contentWidth = pageWidth - (2 * margin);
       let yPosition = margin;
-      const lineHeight = 7;
+      const lineHeight = 6;
 
-      pdf.setFontSize(18);
+      // Title styling
+      pdf.setFontSize(16);
       pdf.setFont('helvetica', 'bold');
-      pdf.text(title[exportLanguage], margin, yPosition);
+      
+      // Center align title
+      const titleWidth = pdf.getStringUnitWidth(title[exportLanguage]) * 16 / pdf.internal.scaleFactor;
+      const titleXPosition = (pageWidth - titleWidth) / 2;
+      pdf.text(title[exportLanguage], titleXPosition, yPosition);
       yPosition += lineHeight * 2;
 
-      timelineData.forEach((entry) => {
-        if (yPosition > 270) {
+      // Content
+      timelineData.forEach((entry, index) => {
+        // Check for new page
+        if (yPosition > pageHeight - margin * 2) {
           pdf.addPage();
           yPosition = margin;
         }
 
-        pdf.setFontSize(14);
+        // Year and title block
+        pdf.setFontSize(12);
         pdf.setFont('helvetica', 'bold');
         const yearTitle = `${entry.year} - ${entry.title[exportLanguage]}`;
-        const splitYearTitle = pdf.splitTextToSize(yearTitle, pageWidth - 2 * margin);
-        pdf.text(splitYearTitle, margin, yPosition);
+        const splitYearTitle = pdf.splitTextToSize(yearTitle, contentWidth);
+        
+        // Add a box around each entry
+        pdf.setDrawColor(200, 200, 200);
+        pdf.setFillColor(250, 250, 250);
+        const entryHeight = (splitYearTitle.length * lineHeight) + 
+                          (pdf.splitTextToSize(entry.description[exportLanguage], contentWidth).length * lineHeight) + 
+                          margin;
+        pdf.roundedRect(margin, yPosition - 4, contentWidth, entryHeight, 2, 2, 'FD');
+
+        pdf.text(splitYearTitle, margin + 5, yPosition);
         yPosition += lineHeight * splitYearTitle.length;
 
-        pdf.setFontSize(12);
+        // Description
+        pdf.setFontSize(10);
         pdf.setFont('helvetica', 'normal');
         const description = entry.description[exportLanguage];
-        const splitDescription = pdf.splitTextToSize(description, pageWidth - 2 * margin);
-        
-        if (yPosition + (lineHeight * splitDescription.length) > 270) {
-          pdf.addPage();
-          yPosition = margin;
-        }
-        
-        pdf.text(splitDescription, margin, yPosition);
-        yPosition += (lineHeight * splitDescription.length) + lineHeight;
+        const splitDescription = pdf.splitTextToSize(description, contentWidth - 10);
+        pdf.text(splitDescription, margin + 5, yPosition);
+        yPosition += (lineHeight * splitDescription.length) + margin;
       });
+
+      // Footer
+      pdf.setFontSize(9);
+      pdf.setFont('helvetica', 'italic');
+      pdf.setTextColor(100, 100, 100);
+      pdf.text('Shiva Prasad Acharya', margin, pageHeight - margin);
+      pdf.text('Supreme Court (2081)', margin, pageHeight - margin + lineHeight);
 
       pdf.save(`${title[exportLanguage].replace(/\s+/g, '-').toLowerCase()}-document.pdf`);
     } catch (error) {
