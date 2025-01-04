@@ -56,7 +56,7 @@ ne: 'क्यासिनोको मुद्दा'
 "22. VL (Valley Link Pvt. Ltd.)"
       ]
     },
-data:[[
+data:[
 {
     "year": "2067/05/23 | २०६७/०५/२३",
     "title": {
