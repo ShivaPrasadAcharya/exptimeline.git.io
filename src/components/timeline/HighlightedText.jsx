@@ -1,3 +1,4 @@
+// src/components/timeline/HighlightedText.jsx
 import React from 'react';
 
 const HighlightedText = ({ text, searchTerm, isCurrentMatch }) => {
