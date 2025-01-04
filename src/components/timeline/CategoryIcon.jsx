@@ -1,3 +1,4 @@
+// src/components/timeline/CategoryIcon.jsx
 import React from 'react';
 import { 
   FileText,
