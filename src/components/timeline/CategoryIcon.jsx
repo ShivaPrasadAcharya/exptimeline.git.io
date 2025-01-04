@@ -1,7 +1,7 @@
 // src/components/timeline/CategoryIcon.jsx
 import React from 'react';
 import { 
-  FileSignature, Files, AlertTriangle, 
+FileSignature, Files, AlertTriangle, 
   FileText,
   Building,
   Eye,
@@ -15,27 +15,78 @@ import {
 const CategoryIcon = ({ category }) => {
   const iconClass = "w-5 h-5";
   
-  const getIconStyle = (cat) => {
-    switch (cat) {
-      case 'contract':
-        return {
-          icon: FileSignature,
-          color: 'text-blue-500',
-          bgColor: 'bg-blue-50'
-        };
-      case 'conflict':
-        return {
-          icon: AlertTriangle,
-          color: 'text-amber-500',
-          bgColor: 'bg-amber-50'
-        };
-      case 'complaint':
+  const getIconStyle = () => {
+    switch (category) {
+     case 'contract':
+  return {
+    icon: FileSignature, // A document with a signature line icon
+    color: 'text-blue-500',
+    bgColor: 'bg-blue-50'
+  };
+
+case 'sub-lease-contract':
+  return {
+    icon: Files, // Stacked documents icon representing related contracts
+    color: 'text-indigo-500',
+    bgColor: 'bg-indigo-50'
+  };
+
+case 'conflict':
+  return {
+    icon: AlertTriangle, // Warning triangle icon suggesting dispute
+    color: 'text-amber-500',
+    bgColor: 'bg-amber-50'
+  };
+
+case 'court':
+  return {
+    icon: Scale, // Justice scale icon representing legal proceedings
+    color: 'text-purple-500',
+    bgColor: 'bg-purple-50'
+  };
+ case 'complaint':
         return {
           icon: FileText,
           color: 'text-red-500',
           bgColor: 'bg-red-50'
         };
-      // Keep your other cases here
+
+      case 'administration':
+        return {
+          icon: Building,
+          color: 'text-blue-500',
+          bgColor: 'bg-blue-50'
+        };
+      case 'monitoring':
+        return {
+          icon: Eye,
+          color: 'text-purple-500',
+          bgColor: 'bg-purple-50'
+        };
+      case 'governance':
+        return {
+          icon: Scale,
+          color: 'text-green-500',
+          bgColor: 'bg-green-50'
+        };
+      case 'service':
+        return {
+          icon: HeartHandshake,
+          color: 'text-orange-500',
+          bgColor: 'bg-orange-50'
+        };
+      case 'digital':
+        return {
+          icon: Laptop,
+          color: 'text-cyan-500',
+          bgColor: 'bg-cyan-50'
+        };
+      case 'planning':
+        return {
+          icon: BarChart,
+          color: 'text-yellow-500',
+          bgColor: 'bg-yellow-50'
+        };
       default:
         return {
           icon: HelpCircle,
@@ -44,20 +95,12 @@ const CategoryIcon = ({ category }) => {
         };
     }
   };
-
-  // Handle both array and single category
-  const categories = Array.isArray(category) ? category : [category];
+  
+  const { icon: Icon, color, bgColor } = getIconStyle();
   
   return (
-    <div className="flex gap-1">
-      {categories.map((cat, index) => {
-        const { icon: Icon, color, bgColor } = getIconStyle(cat);
-        return (
-          <div key={index} className={`${bgColor} p-1.5 rounded-full`}>
-            <Icon className={`${iconClass} ${color} stroke-2`} />
-          </div>
-        );
-      })}
+    <div className={`${bgColor} p-1.5 rounded-full`}>
+      <Icon className={`${iconClass} ${color} stroke-2`} />
     </div>
   );
 };
