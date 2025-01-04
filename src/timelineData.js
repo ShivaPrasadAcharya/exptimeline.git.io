@@ -1,4 +1,8 @@
-// Data structure for multiple timelines
+// Usage examples:
+// Single category:
+// <CategoryIcon category="contract" />
+// Multiple categories:
+// <CategoryIcon category={["contract", "conflict"]} />
 export const timelineGroups = {
   publicService: {
     id: 'publicService',
@@ -31,7 +35,7 @@ export const timelineGroups = {
       en: "Dev Shamsher introduced complaint boxes in public places to hear public grievances directly.",
       ne: "देव शम्शेरले सार्वजनिक स्थलहरूमा उजुरी पेटिका राखी जनगुनासा आफैले सुनुवाइ गर्न थालेका थिए।"
     },
-    category: "contract"
+     category={["contract", "conflict"]} 
   },
   {
     year: "1957 | २०१४",
