@@ -1,20 +1,7 @@
 // src/App.jsx
 import React, { useState } from 'react';
-import { 
-  Globe2, 
-  Eye, 
-  EyeOff,
-  Menu
-} from 'lucide-react';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-
-// Import components
+import {Globe2, Eye, EyeOff, Menu} from 'lucide-react';
+import {Select, SelectContent, SelectItem, SelectTrigger,  SelectValue,} from "@/components/ui/select";
 import Timeline from './components/timeline/Timeline';
 import SearchBar from './components/SearchBar';
 import { useSearch } from './hooks/useSearch';
