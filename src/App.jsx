@@ -168,8 +168,7 @@ const TimelineEntry = ({ data, isActive, onClick, index, language, showContent, 
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-      <div className="relative group" data-entry-index={index}>
-    <div className="relative group">
+    <div className="relative group" data-entry-index={index}>  {/* Added data-entry-index here */}
       <div className="flex items-start gap-3">
         <div className="absolute left-4 top-8 bottom-0 w-0.5 bg-gray-200" />
         
@@ -235,7 +234,7 @@ const TimelineEntry = ({ data, isActive, onClick, index, language, showContent, 
           </div>
         </div>
       </div>
-    </div>
+    </div>  {/* This is the closing div for data-entry-index */}
   );
 };
 
