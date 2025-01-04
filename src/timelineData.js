@@ -1,5 +1,135 @@
 //timeline data
 export const timelineGroups = {
+casino:{
+id:'casino',
+title:{
+en: 'Casino Case',
+ne: 'क्यासिनोको मुद्दा'
+},
+  index: {
+      en: [
+"1. Casino Star Valley Links Pvt. Ltd. (Prasanna Man Shrestha, Narendra Dahal)",
+"2. Casino Rad at Hotel Radisson (Operators: Manoj Prasad Subedi, Niranjan Kumar Khadka)",
+"3. CDO (Chief District Offices - Bhairahawa, Jhapa, Mahendranagar, Morang)",
+"4. Central Media Pvt. Ltd.",
+"5. Director of Hotel and Homestay Section, TD",
+"6. DPO (District Police Offices - Bhairahawa, Kanchanpur)",
+"7. Happy Hour Pvt. Ltd. (Gokarna Lamichhane, Surendra Bahadur Singh)",
+"8. Hotel Pokhara Grand Pvt. Ltd.",
+"9. IPO (Illaka Police Offices - Jhapa, Morang)",
+"10. Lazimpat Oriental Hotel",
+"11. Mahanagariya Prahari Brita (Teku, Sohrakhuttte)",
+"12. MOCTCA (Tourism Ministry, Singhadurbar)",
+"13. MOF (Ministry of Finance)",
+"14. MOHA (Ministry of Home Affairs)",
+"15. MOLJCAPA (Ministry of Law, Justice, Constitutional Assembly and Parliamentary Affairs)",
+"16. OPMCM (Office of PM and COM, Singhadurbar)",
+"17. PG (Pokhara Grand Pvt. Ltd.)",
+"18. Pramod Bhattarai",
+"19. Secretary-MOH",
+"20. TD (Tourism Department, Bhrikutimandap)",
+"21. TID (Tourism Industry Division of MOCTCA)",
+"22. VL (Valley Link Pvt. Ltd.)"
+],
+      ne: [
+"1. Casino Star Valley Links Pvt. Ltd. (Prasanna Man Shrestha, Narendra Dahal)",
+"2. Casino Rad at Hotel Radisson (Operators: Manoj Prasad Subedi, Niranjan Kumar Khadka)",
+"3. CDO (Chief District Offices - Bhairahawa, Jhapa, Mahendranagar, Morang)",
+"4. Central Media Pvt. Ltd.",
+"5. Director of Hotel and Homestay Section, TD",
+"6. DPO (District Police Offices - Bhairahawa, Kanchanpur)",
+"7. Happy Hour Pvt. Ltd. (Gokarna Lamichhane, Surendra Bahadur Singh)",
+"8. Hotel Pokhara Grand Pvt. Ltd.",
+"9. IPO (Illaka Police Offices - Jhapa, Morang)",
+"10. Lazimpat Oriental Hotel",
+"11. Mahanagariya Prahari Brita (Teku, Sohrakhuttte)",
+"12. MOCTCA (Tourism Ministry, Singhadurbar)",
+"13. MOF (Ministry of Finance)",
+"14. MOHA (Ministry of Home Affairs)",
+"15. MOLJCAPA (Ministry of Law, Justice, Constitutional Assembly and Parliamentary Affairs)",
+"16. OPMCM (Office of PM and COM, Singhadurbar)",
+"17. PG (Pokhara Grand Pvt. Ltd.)",
+"18. Pramod Bhattarai",
+"19. Secretary-MOH",
+"20. TD (Tourism Department, Bhrikutimandap)",
+"21. TID (Tourism Industry Division of MOCTCA)",
+"22. VL (Valley Link Pvt. Ltd.)"
+      ]
+    },
+data:[{
+    "year": "2070 | २०७०",
+    "title": {
+        "en": "Casino Regulation Publication",
+        "ne": "क्यासिनो नियमावली प्रकाशन"
+    },
+    "description": {
+        "en": "Supreme Court ordered publication of Casino Regulations in Nepal Gazette, effective from Shrawan 7, 2070",
+        "ne": "सर्वोच्च अदालतको आदेश बमोजिम २०७० साल श्रावण ७ गते क्यासिनो नियमावली राजपत्रमा प्रकाशित भई कार्यान्वयनमा आएको"
+    },
+    "category": "regulation"
+},
+{
+    "year": "2070 | २०७०",
+    "title": {
+        "en": "Financial Requirements for Casino Operation",
+        "ne": "क्यासिनो संचालनका लागि आर्थिक मापदण्ड"
+    },
+    "description": {
+        "en": "New regulations set paid-up capital of 25 crore, royalty of 4 crore, application fee of 5 lakh, license fee of 2 crore, and annual renewal fee of 1 crore",
+        "ne": "नियमावलीले चुक्ता पुँजी २५ करोड, रोयल्टी ४ करोड, निवेदन दस्तुर ५ लाख, इजाजत दस्तुर २ करोड, र वार्षिक नवीकरण दस्तुर १ करोड तोकेको"
+    },
+    "category": "financial"
+},
+{
+    "year": "2067 | २०६७",
+    "title": {
+        "en": "Happy Hour Multiple Casino License",
+        "ne": "ह्याप्पी आवर बहु क्यासिनो अनुमति"
+    },
+    "description": {
+        "en": "Happy Hour received permission to operate casinos in 10 locations through MOCTCA ministerial decision",
+        "ne": "ह्याप्पी आवरले पर्यटन मन्त्रालयको मन्त्रीस्तरीय निर्णयबाट १० स्थानमा क्यासिनो संचालन गर्न अनुमति प्राप्त गरेको"
+    },
+    "category": "license"
+},
+{
+    "year": "2071 | २०७१",
+    "title": {
+        "en": "Casino Closure Decision",
+        "ne": "क्यासिनो बन्द गर्ने निर्णय"
+    },
+    "description": {
+        "en": "Ministry decided to close casinos on 2071/01/05, leading to multiple writ petitions",
+        "ne": "२०७१/०१/०५ मा मन्त्रालयले क्यासिनो बन्द गर्ने निर्णय गरेको, जसका विरुद्ध धेरै रिट निवेदन दायर"
+    },
+    "category": "administrative"
+},
+{
+    "year": "2070/71 | २०७०/७१",
+    "title": {
+        "en": "Royalty Rate Increase",
+        "ne": "रोयल्टी दर वृद्धि"
+    },
+    "description": {
+        "en": "Economic ordinance increased royalty to 4 crore for casino and 3 crore for machine casino from previous 2 crore",
+        "ne": "आर्थिक अध्यादेशले क्यासिनो र मेशिनेबल क्यासिनोको रोयल्टी क्रमशः ४ र ३ करोड पुर्याएको, जुन पहिले २ करोड थियो"
+    },
+    "category": "financial"
+},
+{
+    "year": "2071 | २०७१",
+    "title": {
+        "en": "Casino Operators' Legal Challenge",
+        "ne": "क्यासिनो संचालकहरूको कानूनी चुनौती"
+    },
+    "description": {
+        "en": "Casino operators filed petitions claiming regulations violated Tourism Act 2035 and Interpretation of Laws Act 2010",
+        "ne": "क्यासिनो संचालकहरूले नियमावली पर्यटन ऐन, २०३५ र कानून व्याख्या सम्बन्धी ऐन, २०१० सँग बाझिएको भन्दै रिट दायर"
+    },
+    "category": "legal"
+}
+]
+},
   publicService: {
     id: 'publicService',
     title: {
