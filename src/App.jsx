@@ -318,62 +318,111 @@ const exportToPDFAsImage = async (exportLanguage) => {
   }
 };
 
-const exportToPDFAsDoc = async (exportLanguage) => {
+const exportToDocx = async (exportLanguage) => {
   if (timelineRef.current) {
     try {
       setIsExporting(true);
       
-      const pdf = new jsPDF('p', 'mm', 'a4');
-      const pageWidth = pdf.internal.pageSize.getWidth();
-      const pageHeight = pdf.internal.pageSize.getHeight();
-      const margin = 15;
-      const contentWidth = pageWidth - (2 * margin);
-      let yPosition = margin;
-      const lineHeight = 6;
+      const {
+        Document,
+        Paragraph,
+        TextRun,
+        HeadingLevel,
+        BorderStyle,
+        TableCell,
+        TableRow,
+        Table,
+        WidthType,
+      } = require('docx');
 
-      // Title styling
-      pdf.setFontSize(16);
-      pdf.setFont('helvetica', 'bold');
-      
-      // Center align title
-      const titleWidth = pdf.getStringUnitWidth(title[exportLanguage]) * 16 / pdf.internal.scaleFactor;
-      const titleXPosition = (pageWidth - titleWidth) / 2;
-      pdf.text(title[exportLanguage], titleXPosition, yPosition);
-      yPosition += lineHeight * 2;
+      // Create document
+      const doc = new Document({
+        sections: [{
+          properties: {},
+          children: [
+            // Title
+            new Paragraph({
+              text: title[exportLanguage],
+              heading: HeadingLevel.HEADING_1,
+              spacing: {
+                after: 200,
+              },
+              alignment: 'CENTER'
+            }),
+            
+            // Timeline entries
+            ...timelineData.map((entry) => [
+              new Paragraph({
+                children: [
+                  new TextRun({
+                    text: `${entry.year} - ${entry.title[exportLanguage]}`,
+                    bold: true,
+                    size: 28
+                  })
+                ],
+                spacing: {
+                  before: 400,
+                  after: 200
+                }
+              }),
+              new Paragraph({
+                children: [
+                  new TextRun({
+                    text: entry.description[exportLanguage],
+                    size: 24
+                  })
+                ],
+                spacing: {
+                  after: 200
+                }
+              })
+            ]).flat(),
 
-      // Content
-      timelineData.forEach((entry, index) => {
-        // Check for new page
-        if (yPosition > pageHeight - margin * 2) {
-          pdf.addPage();
-          yPosition = margin;
-        }
-
-        // Year and title block
-        pdf.setFontSize(12);
-        pdf.setFont('helvetica', 'bold');
-        const yearTitle = `${entry.year} - ${entry.title[exportLanguage]}`;
-        const splitYearTitle = pdf.splitTextToSize(yearTitle, contentWidth);
-        
-        // Add a box around each entry
-        pdf.setDrawColor(200, 200, 200);
-        pdf.setFillColor(250, 250, 250);
-        const entryHeight = (splitYearTitle.length * lineHeight) + 
-                          (pdf.splitTextToSize(entry.description[exportLanguage], contentWidth).length * lineHeight) + 
-                          margin;
-        pdf.roundedRect(margin, yPosition - 4, contentWidth, entryHeight, 2, 2, 'FD');
-
-        pdf.text(splitYearTitle, margin + 5, yPosition);
-        yPosition += lineHeight * splitYearTitle.length;
-
-        // Description
-        pdf.setFontSize(10);
-        pdf.setFont('helvetica', 'normal');
-        const description = entry.description[exportLanguage];
-        const splitDescription = pdf.splitTextToSize(description, contentWidth - 10);
-        pdf.text(splitDescription, margin + 5, yPosition);
-        yPosition += (lineHeight * splitDescription.length) + margin;
+            // Footer
+            new Paragraph({
+              children: [
+                new TextRun({
+                  text: "Shiva Prasad Acharya",
+                  italics: true,
+                  size: 20
+                })
+              ],
+              spacing: {
+                before: 400
+              }
+            }),
+            new Paragraph({
+              children: [
+                new TextRun({
+                  text: "Supreme Court (2081)",
+                  italics: true,
+                  size: 20
+                })
+              ]
+            })
+          ]
+        }]
       });
+
+      // Generate and save document
+      const buffer = await Packer.toBuffer(doc);
+      const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${title[exportLanguage].replace(/\s+/g, '-').toLowerCase()}.docx`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+
+    } catch (error) {
+      console.error('Error generating DOCX:', error);
+    } finally {
+      setIsExporting(false);
+    }
+  }
+};
 
       // Footer
       pdf.setFontSize(9);
