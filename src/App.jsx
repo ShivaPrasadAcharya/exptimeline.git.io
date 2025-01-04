@@ -504,7 +504,7 @@ const exportToDocx = async (exportLanguage) => {
 };
 
 // Add this component in your App.jsx, after your other component definitions
-const ExportDropdown = ({ isExporting, language, onExportImage, onExportDoc }) => {
+const ExportDropdown = ({ isExporting, language, onExportDocx }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -525,7 +525,7 @@ const ExportDropdown = ({ isExporting, language, onExportImage, onExportDoc }) =
         ) : (
           <>
             <Download className="w-4 h-4" />
-            Export PDF
+            Export Document
           </>
         )}
       </button>
@@ -536,22 +536,12 @@ const ExportDropdown = ({ isExporting, language, onExportImage, onExportDoc }) =
             <button
               className="w-full flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               onClick={() => {
-                onExportImage(language);
-                setIsOpen(false);
-              }}
-            >
-              <FileImage className="w-4 h-4 mr-2" />
-              Export as Image
-            </button>
-            <button
-              className="w-full flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              onClick={() => {
-                onExportDoc(language);
+                onExportDocx(language);
                 setIsOpen(false);
               }}
             >
               <FileText className="w-4 h-4 mr-2" />
-              Export as Document
+              Export as DOCX
             </button>
           </div>
         </div>
