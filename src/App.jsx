@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import TimelineEntry from './components/timeline/TimelineEntry';
 import { 
   Globe2, 
   Info, 
@@ -35,71 +36,6 @@ import html2canvas from 'html2canvas';
 import SearchBar from './components/SearchBar';
 import { useSearch } from './hooks/useSearch';
 
-const CategoryIcon = ({ category }) => {
-  const iconClass = "w-5 h-5";
-  
-  const getIconStyle = () => {
-    switch (category) {
-      case 'complaint':
-        return {
-          icon: FileText,
-          color: 'text-red-500',
-          bgColor: 'bg-red-50'
-        };
-      case 'administration':
-        return {
-          icon: Building,
-          color: 'text-blue-500',
-          bgColor: 'bg-blue-50'
-        };
-      case 'monitoring':
-        return {
-          icon: Eye,
-          color: 'text-purple-500',
-          bgColor: 'bg-purple-50'
-        };
-      case 'governance':
-        return {
-          icon: Scale,
-          color: 'text-green-500',
-          bgColor: 'bg-green-50'
-        };
-      case 'service':
-        return {
-          icon: HeartHandshake,
-          color: 'text-orange-500',
-          bgColor: 'bg-orange-50'
-        };
-      case 'digital':
-        return {
-          icon: Laptop,
-          color: 'text-cyan-500',
-          bgColor: 'bg-cyan-50'
-        };
-      case 'planning':
-        return {
-          icon: BarChart,
-          color: 'text-yellow-500',
-          bgColor: 'bg-yellow-50'
-        };
-      default:
-        return {
-          icon: HelpCircle,
-          color: 'text-gray-500',
-          bgColor: 'bg-gray-50'
-        };
-    }
-  };
-  
-  const { icon: Icon, color, bgColor } = getIconStyle();
-  
-  return (
-    <div className={`${bgColor} p-1.5 rounded-full`}>
-      <Icon className={`${iconClass} ${color} stroke-2`} />
-    </div>
-  );
-};
-
 const highlightText = (text, matches) => {
   if (!matches || matches.length === 0) return text;
   
@@ -118,28 +54,6 @@ const highlightText = (text, matches) => {
   
   segments.push(text.substring(lastIndex));
   return segments;
-};
-const HighlightedText = ({ text, searchTerm, isCurrentMatch }) => {
-  if (!searchTerm || !text) return text;
-  
-  const parts = text.toString().split(new RegExp(`(${searchTerm})`, 'gi'));
-  return (
-    <span>
-      {parts.map((part, i) => {
-        if (part.toLowerCase() === searchTerm.toLowerCase()) {
-          return (
-            <mark 
-              key={i} 
-              className={`${isCurrentMatch ? 'bg-orange-200' : 'bg-yellow-200'}`}
-            >
-              {part}
-            </mark>
-          );
-        }
-        return part;
-      })}
-    </span>
-  );
 };
 
 const IndexSection = ({ index, language, onIndexClick }) => {
@@ -184,80 +98,6 @@ const IndexSection = ({ index, language, onIndexClick }) => {
     </div>
   );
 };
-const TimelineEntry = ({ data, isActive, onClick, index, language, showContent, searchTerm, isCurrentMatch }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  return (
-    <div className="relative group" data-entry-index={index}>
-      <div className="flex items-start gap-3">
-        <div className="absolute left-4 top-8 bottom-0 w-0.5 bg-gray-200" />
-        
-        <div className={`relative z-10 w-8 h-8 rounded-full flex items-center justify-center ${
-          isActive ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-600'
-        } text-sm`}>
-          {index + 1}
-        </div>
-
-        <div className="flex-1 pb-6">
-          <div className="flex flex-col gap-2">
-            <div 
-              className={`cursor-pointer transition-all duration-300 ${
-                isActive 
-                  ? 'bg-blue-50 border-blue-500 shadow-sm' 
-                  : 'bg-white hover:bg-gray-50 border-gray-200'
-              } border rounded-lg p-3 flex items-center gap-3 w-full md:w-64`}
-              onClick={onClick}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-            >
-              <CategoryIcon category={data.category} />
-              <div>
-                <div className="font-medium text-base">
-                  <HighlightedText 
-                    text={data.year.toString()}
-                    searchTerm={searchTerm}
-                    isCurrentMatch={isCurrentMatch}
-                  />
-                </div>
-                <div className={`text-sm ${isActive ? 'text-blue-800' : 'text-gray-600'}`}>
-                  <HighlightedText 
-                    text={data.title[language]}
-                    searchTerm={searchTerm}
-                    isCurrentMatch={isCurrentMatch}
-                  />
-                </div>
-              </div>
-            </div>
-
-            {showContent && (
-              <div 
-                className="ml-0 md:ml-4 text-gray-700"
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-              >
-                <div className="text-sm whitespace-pre-line">
-                  <HighlightedText 
-                    text={data.description[language]}
-                    searchTerm={searchTerm}
-                    isCurrentMatch={isCurrentMatch}
-                  />
-                </div>
-                {isHovered && (
-                  <div className="mt-2 p-3 bg-white rounded-lg shadow-md border border-gray-200">
-                    <div className="text-sm whitespace-pre-line">
-                      {data.description[language === 'en' ? 'ne' : 'en']}
-                    </div>
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 const Timeline = ({ timelineData, title, index, language, isActive, showContent, searchTerm, currentMatchIndex }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const timelineRef = useRef(null);
