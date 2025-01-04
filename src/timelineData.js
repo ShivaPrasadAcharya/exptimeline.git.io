@@ -43,7 +43,7 @@ export const timelineGroups = {
       en: "King Mahendra established 'Quick Action Committee Act 2014' under Major General Yog Bikram Rana.",
       ne: "राजा महेन्द्रले 'कार्य शीघ्र कारक समिति ऐन, २०१४' जारी गरी मेजर जनरल योग विक्रम राणाको अध्यक्षतामा एक समिति गठन।"
     },
-    category: "administration"
+    category: "court"
   },
   {
     year: "1961 | २०१८",
@@ -55,7 +55,7 @@ export const timelineGroups = {
       en: "King Mahendra deployed inspection teams and established 'Investigation Center' under Crown Prince.",
       ne: "राजा महेन्द्रले दौडाहा टोली खटाई सेवा वितरणको निगरानी र दरबारमा 'जाँचबुझ केन्द्र' खडा।"
     },
-    category: "monitoring"
+    category: "sub-lease-contract"
   },
   {
     year: "1975 | २०३२",
@@ -67,7 +67,7 @@ export const timelineGroups = {
       en: "Implementation of 'District Administration Plan 2031' introducing Single Clearing House concept.",
       ne: "'जिल्ला प्रशासन योजना, २०३१' लागू गरेर Single Clearing House को अवधारणाको थालनी।"
     },
-    category: "administration"
+    category: "conflict"
   },
   {
     year: "1999 | २०५६",
