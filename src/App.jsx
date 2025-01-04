@@ -261,104 +261,135 @@ const TimelineEntry = ({ data, isActive, onClick, index, language, showContent, 
 const Timeline = ({ timelineData, title, index, language, isActive, showContent, searchTerm, currentMatchIndex }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const timelineRef = useRef(null);
-  const [isExporting, setIsExporting] = useState(false);  // Only one declaration
 
   const handleIndexClick = (idx) => {
     setActiveIndex(idx);
   };
 
-  const exportToDocx = async (exportLanguage) => {
-    if (timelineRef.current) {
-      try {
-        setIsExporting(true);
-        
-        // Import docx at the top of your file
-        const { Document, Paragraph, TextRun, Packer } = await import('docx');
+  const [isExporting, setIsExporting] = useState(false);
 
-        // Create document
-        const doc = new Document({
-          sections: [{
-            properties: {},
-            children: [
-              new Paragraph({
-                text: title[exportLanguage],
-                heading: 1,
-                spacing: {
-                  after: 200,
-                },
-                alignment: 'CENTER'
-              }),
-              
-              ...timelineData.map((entry) => [
-                new Paragraph({
-                  children: [
-                    new TextRun({
-                      text: `${entry.year} - ${entry.title[exportLanguage]}`,
-                      bold: true,
-                      size: 28
-                    })
-                  ],
-                  spacing: {
-                    before: 400,
-                    after: 200
-                  }
-                }),
-                new Paragraph({
-                  children: [
-                    new TextRun({
-                      text: entry.description[exportLanguage],
-                      size: 24
-                    })
-                  ],
-                  spacing: {
-                    after: 200
-                  }
-                })
-              ]).flat(),
+const exportToPDFAsImage = async (exportLanguage) => {
+  if (timelineRef.current) {
+    try {
+      setIsExporting(true);
+      const element = timelineRef.current;
+      const scrollHeight = element.scrollHeight;
+      
+      const canvas = await html2canvas(element, {
+        height: scrollHeight,
+        windowHeight: scrollHeight,
+        scrollY: -window.scrollY,
+        useCORS: true,
+        scale: 2,
+        logging: false,
+        onclone: (clonedDoc) => {
+          const clonedElement = clonedDoc.querySelector('.card-content');
+          if (clonedElement) {
+            clonedElement.style.height = 'auto';
+            clonedElement.style.overflow = 'visible';
+          }
+        }
+      });
 
-              new Paragraph({
-                children: [
-                  new TextRun({
-                    text: "Shiva Prasad Acharya",
-                    italics: true,
-                    size: 20
-                  })
-                ],
-                spacing: {
-                  before: 400
-                }
-              }),
-              new Paragraph({
-                children: [
-                  new TextRun({
-                    text: "Supreme Court (2081)",
-                    italics: true,
-                    size: 20
-                  })
-                ]
-              })
-            ]
-          }]
-        });
-
-        const buffer = await Packer.toBuffer(doc);
-        const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
-        const url = window.URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = `${title[exportLanguage].replace(/\s+/g, '-').toLowerCase()}.docx`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        window.URL.revokeObjectURL(url);
-
-      } catch (error) {
-        console.error('Error generating DOCX:', error);
-      } finally {
-        setIsExporting(false);
+      const imgWidth = 210;
+      const pageHeight = 295;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      let heightLeft = imgHeight;
+      let position = 0;
+      
+      pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+      
+      while (heightLeft >= 0) {
+        position = heightLeft - imgHeight;
+        pdf.addPage();
+        pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
       }
+      
+      pdf.save(`${title[exportLanguage].replace(/\s+/g, '-').toLowerCase()}-snapshot.pdf`);
+    } catch (error) {
+      console.error('Error generating image PDF:', error);
+    } finally {
+      setIsExporting(false);
     }
-  };
+  }
+};
+
+const exportToPDFAsDoc = async (exportLanguage) => {
+  if (timelineRef.current) {
+    try {
+      setIsExporting(true);
+      
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      const margin = 15;
+      const contentWidth = pageWidth - (2 * margin);
+      let yPosition = margin;
+      const lineHeight = 6;
+
+      // Title styling
+      pdf.setFontSize(16);
+      pdf.setFont('helvetica', 'bold');
+      
+      // Center align title
+      const titleWidth = pdf.getStringUnitWidth(title[exportLanguage]) * 16 / pdf.internal.scaleFactor;
+      const titleXPosition = (pageWidth - titleWidth) / 2;
+      pdf.text(title[exportLanguage], titleXPosition, yPosition);
+      yPosition += lineHeight * 2;
+
+      // Content
+      timelineData.forEach((entry, index) => {
+        // Check for new page
+        if (yPosition > pageHeight - margin * 2) {
+          pdf.addPage();
+          yPosition = margin;
+        }
+
+        // Year and title block
+        pdf.setFontSize(12);
+        pdf.setFont('helvetica', 'bold');
+        const yearTitle = `${entry.year} - ${entry.title[exportLanguage]}`;
+        const splitYearTitle = pdf.splitTextToSize(yearTitle, contentWidth);
+        
+        // Add a box around each entry
+        pdf.setDrawColor(200, 200, 200);
+        pdf.setFillColor(250, 250, 250);
+        const entryHeight = (splitYearTitle.length * lineHeight) + 
+                          (pdf.splitTextToSize(entry.description[exportLanguage], contentWidth).length * lineHeight) + 
+                          margin;
+        pdf.roundedRect(margin, yPosition - 4, contentWidth, entryHeight, 2, 2, 'FD');
+
+        pdf.text(splitYearTitle, margin + 5, yPosition);
+        yPosition += lineHeight * splitYearTitle.length;
+
+        // Description
+        pdf.setFontSize(10);
+        pdf.setFont('helvetica', 'normal');
+        const description = entry.description[exportLanguage];
+        const splitDescription = pdf.splitTextToSize(description, contentWidth - 10);
+        pdf.text(splitDescription, margin + 5, yPosition);
+        yPosition += (lineHeight * splitDescription.length) + margin;
+      });
+
+      // Footer
+      pdf.setFontSize(9);
+      pdf.setFont('helvetica', 'italic');
+      pdf.setTextColor(100, 100, 100);
+      pdf.text('Shiva Prasad Acharya', margin, pageHeight - margin);
+      pdf.text('Supreme Court (2081)', margin, pageHeight - margin + lineHeight);
+
+      pdf.save(`${title[exportLanguage].replace(/\s+/g, '-').toLowerCase()}-document.pdf`);
+    } catch (error) {
+      console.error('Error generating document PDF:', error);
+    } finally {
+      setIsExporting(false);
+    }
+  }
+};
 
   if (!isActive) return null;
 
@@ -367,17 +398,17 @@ const Timeline = ({ timelineData, title, index, language, isActive, showContent,
   return (
     <Card className="w-full max-w-3xl mx-auto mb-8">
       <CardContent className="p-4" ref={timelineRef}>
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
-            {title[language]}
-          </h2>
-          <ExportDropdown 
-            isExporting={isExporting} 
-            language={language} 
-            onExportDocx={exportToDocx}
-          />
-        </div>
-        {/* Rest of your JSX remains the same */}
+       <div className="flex justify-between items-center mb-6">
+  <h2 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
+    {title[language]}
+  </h2>
+  <ExportDropdown 
+    isExporting={isExporting} 
+    language={language} 
+    onExportImage={exportToPDFAsImage} 
+    onExportDoc={exportToPDFAsDoc} 
+  />
+</div>
 
         <IndexSection 
           index={index}
@@ -424,7 +455,7 @@ const Timeline = ({ timelineData, title, index, language, isActive, showContent,
 };
 
 // Add this component in your App.jsx, after your other component definitions
-const ExportDropdown = ({ isExporting, language, onExportDocx }) => {
+const ExportDropdown = ({ isExporting, language, onExportImage, onExportDoc }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -445,7 +476,7 @@ const ExportDropdown = ({ isExporting, language, onExportDocx }) => {
         ) : (
           <>
             <Download className="w-4 h-4" />
-            Export Document
+            Export PDF
           </>
         )}
       </button>
@@ -456,12 +487,22 @@ const ExportDropdown = ({ isExporting, language, onExportDocx }) => {
             <button
               className="w-full flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               onClick={() => {
-                onExportDocx(language);
+                onExportImage(language);
+                setIsOpen(false);
+              }}
+            >
+              <FileImage className="w-4 h-4 mr-2" />
+              Export as Image
+            </button>
+            <button
+              className="w-full flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              onClick={() => {
+                onExportDoc(language);
                 setIsOpen(false);
               }}
             >
               <FileText className="w-4 h-4 mr-2" />
-              Export as DOCX
+              Export as Document
             </button>
           </div>
         </div>
