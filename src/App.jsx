@@ -261,185 +261,104 @@ const TimelineEntry = ({ data, isActive, onClick, index, language, showContent, 
 const Timeline = ({ timelineData, title, index, language, isActive, showContent, searchTerm, currentMatchIndex }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const timelineRef = useRef(null);
-  const [isExporting, setIsExporting] = useState(false);  // Add this line here
+  const [isExporting, setIsExporting] = useState(false);  // Only one declaration
 
   const handleIndexClick = (idx) => {
     setActiveIndex(idx);
   };
 
-  const [isExporting, setIsExporting] = useState(false);
+  const exportToDocx = async (exportLanguage) => {
+    if (timelineRef.current) {
+      try {
+        setIsExporting(true);
+        
+        // Import docx at the top of your file
+        const { Document, Paragraph, TextRun, Packer } = await import('docx');
 
-const exportToPDFAsImage = async (exportLanguage) => {
-  if (timelineRef.current) {
-    try {
-      setIsExporting(true);
-      const element = timelineRef.current;
-      const scrollHeight = element.scrollHeight;
-      
-      const canvas = await html2canvas(element, {
-        height: scrollHeight,
-        windowHeight: scrollHeight,
-        scrollY: -window.scrollY,
-        useCORS: true,
-        scale: 2,
-        logging: false,
-        onclone: (clonedDoc) => {
-          const clonedElement = clonedDoc.querySelector('.card-content');
-          if (clonedElement) {
-            clonedElement.style.height = 'auto';
-            clonedElement.style.overflow = 'visible';
-          }
-        }
-      });
+        // Create document
+        const doc = new Document({
+          sections: [{
+            properties: {},
+            children: [
+              new Paragraph({
+                text: title[exportLanguage],
+                heading: 1,
+                spacing: {
+                  after: 200,
+                },
+                alignment: 'CENTER'
+              }),
+              
+              ...timelineData.map((entry) => [
+                new Paragraph({
+                  children: [
+                    new TextRun({
+                      text: `${entry.year} - ${entry.title[exportLanguage]}`,
+                      bold: true,
+                      size: 28
+                    })
+                  ],
+                  spacing: {
+                    before: 400,
+                    after: 200
+                  }
+                }),
+                new Paragraph({
+                  children: [
+                    new TextRun({
+                      text: entry.description[exportLanguage],
+                      size: 24
+                    })
+                  ],
+                  spacing: {
+                    after: 200
+                  }
+                })
+              ]).flat(),
 
-      const imgWidth = 210;
-      const pageHeight = 295;
-      const imgHeight = (canvas.height * imgWidth) / canvas.width;
-      
-      const pdf = new jsPDF('p', 'mm', 'a4');
-      let heightLeft = imgHeight;
-      let position = 0;
-      
-      pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight);
-      heightLeft -= pageHeight;
-      
-      while (heightLeft >= 0) {
-        position = heightLeft - imgHeight;
-        pdf.addPage();
-        pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight;
-      }
-      
-      pdf.save(`${title[exportLanguage].replace(/\s+/g, '-').toLowerCase()}-snapshot.pdf`);
-    } catch (error) {
-      console.error('Error generating image PDF:', error);
-    } finally {
-      setIsExporting(false);
-    }
-  }
-};
-
-const exportToDocx = async (exportLanguage) => {
-  if (timelineRef.current) {
-    try {
-      setIsExporting(true);
-      
-      const {
-        Document,
-        Paragraph,
-        TextRun,
-        HeadingLevel,
-        BorderStyle,
-        TableCell,
-        TableRow,
-        Table,
-        WidthType,
-      } = require('docx');
-
-      // Create document
-      const doc = new Document({
-        sections: [{
-          properties: {},
-          children: [
-            // Title
-            new Paragraph({
-              text: title[exportLanguage],
-              heading: HeadingLevel.HEADING_1,
-              spacing: {
-                after: 200,
-              },
-              alignment: 'CENTER'
-            }),
-            
-            // Timeline entries
-            ...timelineData.map((entry) => [
               new Paragraph({
                 children: [
                   new TextRun({
-                    text: `${entry.year} - ${entry.title[exportLanguage]}`,
-                    bold: true,
-                    size: 28
+                    text: "Shiva Prasad Acharya",
+                    italics: true,
+                    size: 20
                   })
                 ],
                 spacing: {
-                  before: 400,
-                  after: 200
+                  before: 400
                 }
               }),
               new Paragraph({
                 children: [
                   new TextRun({
-                    text: entry.description[exportLanguage],
-                    size: 24
+                    text: "Supreme Court (2081)",
+                    italics: true,
+                    size: 20
                   })
-                ],
-                spacing: {
-                  after: 200
-                }
+                ]
               })
-            ]).flat(),
+            ]
+          }]
+        });
 
-            // Footer
-            new Paragraph({
-              children: [
-                new TextRun({
-                  text: "Shiva Prasad Acharya",
-                  italics: true,
-                  size: 20
-                })
-              ],
-              spacing: {
-                before: 400
-              }
-            }),
-            new Paragraph({
-              children: [
-                new TextRun({
-                  text: "Supreme Court (2081)",
-                  italics: true,
-                  size: 20
-                })
-              ]
-            })
-          ]
-        }]
-      });
+        const buffer = await Packer.toBuffer(doc);
+        const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `${title[exportLanguage].replace(/\s+/g, '-').toLowerCase()}.docx`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
 
-      // Generate and save document
-      const buffer = await Packer.toBuffer(doc);
-      const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = `${title[exportLanguage].replace(/\s+/g, '-').toLowerCase()}.docx`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
-
-    } catch (error) {
-      console.error('Error generating DOCX:', error);
-    } finally {
-      setIsExporting(false);
+      } catch (error) {
+        console.error('Error generating DOCX:', error);
+      } finally {
+        setIsExporting(false);
+      }
     }
-  }
-};
-
-      // Footer
-      pdf.setFontSize(9);
-      pdf.setFont('helvetica', 'italic');
-      pdf.setTextColor(100, 100, 100);
-      pdf.text('Shiva Prasad Acharya', margin, pageHeight - margin);
-      pdf.text('Supreme Court (2081)', margin, pageHeight - margin + lineHeight);
-
-      pdf.save(`${title[exportLanguage].replace(/\s+/g, '-').toLowerCase()}-document.pdf`);
-    } catch (error) {
-      console.error('Error generating document PDF:', error);
-    } finally {
-      setIsExporting(false);
-    }
-  }
-};
+  };
 
   if (!isActive) return null;
 
@@ -448,17 +367,17 @@ const exportToDocx = async (exportLanguage) => {
   return (
     <Card className="w-full max-w-3xl mx-auto mb-8">
       <CardContent className="p-4" ref={timelineRef}>
-       <div className="flex justify-between items-center mb-6">
-  <h2 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
-    {title[language]}
-  </h2>
-  <ExportDropdown 
-    isExporting={isExporting} 
-    language={language} 
-    onExportImage={exportToPDFAsImage} 
-    onExportDoc={exportToPDFAsDoc} 
-  />
-</div>
+        <div className="flex justify-between items-center mb-6">
+          <h2 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
+            {title[language]}
+          </h2>
+          <ExportDropdown 
+            isExporting={isExporting} 
+            language={language} 
+            onExportDocx={exportToDocx}
+          />
+        </div>
+        {/* Rest of your JSX remains the same */}
 
         <IndexSection 
           index={index}
