@@ -1,6 +1,7 @@
 // src/components/timeline/CategoryIcon.jsx
 import React from 'react';
 import { 
+FileSignature, Files, AlertTriangle, 
   FileText,
   Building,
   Eye,
@@ -16,12 +17,40 @@ const CategoryIcon = ({ category }) => {
   
   const getIconStyle = () => {
     switch (category) {
-      case 'complaint':
+     case 'contract':
+  return {
+    icon: FileSignature, // A document with a signature line icon
+    color: 'text-blue-500',
+    bgColor: 'bg-blue-50'
+  };
+
+case 'sub-lease-contract':
+  return {
+    icon: Files, // Stacked documents icon representing related contracts
+    color: 'text-indigo-500',
+    bgColor: 'bg-indigo-50'
+  };
+
+case 'conflict':
+  return {
+    icon: AlertTriangle, // Warning triangle icon suggesting dispute
+    color: 'text-amber-500',
+    bgColor: 'bg-amber-50'
+  };
+
+case 'court':
+  return {
+    icon: Scale, // Justice scale icon representing legal proceedings
+    color: 'text-purple-500',
+    bgColor: 'bg-purple-50'
+  };
+ case 'complaint':
         return {
           icon: FileText,
           color: 'text-red-500',
           bgColor: 'bg-red-50'
         };
+
       case 'administration':
         return {
           icon: Building,
