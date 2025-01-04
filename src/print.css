@@ -1,0 +1,90 @@
+/* Print-specific styles */
+@media print {
+  /* Hide interactive elements */
+  button,
+  select,
+  .hover-card,
+  .timeline-controls {
+    display: none !important;
+  }
+
+  /* Show hidden content */
+  .hidden-print-content {
+    display: block !important;
+    visibility: visible !important;
+  }
+
+  /* Ensure timeline entries are fully visible */
+  .timeline-description {
+    display: block !important;
+    opacity: 1 !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* Adjust spacing and layout for print */
+  .timeline-entry {
+    page-break-inside: avoid;
+    margin-bottom: 1em;
+  }
+
+  /* Reset background colors for better printing */
+  body {
+    background: white !important;
+  }
+
+  /* Ensure text is readable in print */
+  * {
+    color: black !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Keep the timeline line visible in print */
+  .timeline-line {
+    border-left: 2px solid #ccc !important;
+  }
+
+  /* Adjust card styles for print */
+  .card {
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    padding: 1em 0 !important;
+  }
+
+  /* Format headings for print */
+  h2 {
+    font-size: 24pt !important;
+    margin-bottom: 1em !important;
+  }
+
+  /* Ensure descriptions are fully visible */
+  .timeline-description p {
+    display: block !important;
+    margin-bottom: 0.5em !important;
+  }
+
+  /* Hide decorative elements */
+  .bg-gradient-to-br,
+  .shadow-sm,
+  .hover\:shadow-md {
+    background: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Page breaks */
+  .timeline-section {
+    page-break-before: always;
+  }
+
+  /* First section should not have page break */
+  .timeline-section:first-child {
+    page-break-before: avoid;
+  }
+
+  /* Ensure proper margins */
+  @page {
+    margin: 2cm;
+  }
+}
