@@ -266,19 +266,108 @@ const Timeline = ({ timelineData, title, index, language, isActive, showContent,
     setActiveIndex(idx);
   };
 
-  const exportToPDF = async (exportLanguage) => {
-    const pdf = new jsPDF('p', 'mm', 'a4');
-    if (timelineRef.current) {
-      try {
-        const canvas = await html2canvas(timelineRef.current);
-        const imgData = canvas.toDataURL('image/png');
-        pdf.addImage(imgData, 'PNG', 10, 10, 190, 0);
-        pdf.save(`${title[exportLanguage].replace(/\s+/g, '-').toLowerCase()}.pdf`);
-      } catch (error) {
-        console.error('Error generating PDF:', error);
+  const [isExporting, setIsExporting] = useState(false);
+
+const exportToPDFAsImage = async (exportLanguage) => {
+  if (timelineRef.current) {
+    try {
+      setIsExporting(true);
+      const element = timelineRef.current;
+      const scrollHeight = element.scrollHeight;
+      
+      const canvas = await html2canvas(element, {
+        height: scrollHeight,
+        windowHeight: scrollHeight,
+        scrollY: -window.scrollY,
+        useCORS: true,
+        scale: 2,
+        logging: false,
+        onclone: (clonedDoc) => {
+          const clonedElement = clonedDoc.querySelector('.card-content');
+          if (clonedElement) {
+            clonedElement.style.height = 'auto';
+            clonedElement.style.overflow = 'visible';
+          }
+        }
+      });
+
+      const imgWidth = 210;
+      const pageHeight = 295;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      let heightLeft = imgHeight;
+      let position = 0;
+      
+      pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+      
+      while (heightLeft >= 0) {
+        position = heightLeft - imgHeight;
+        pdf.addPage();
+        pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
       }
+      
+      pdf.save(`${title[exportLanguage].replace(/\s+/g, '-').toLowerCase()}-snapshot.pdf`);
+    } catch (error) {
+      console.error('Error generating image PDF:', error);
+    } finally {
+      setIsExporting(false);
     }
-  };
+  }
+};
+
+const exportToPDFAsDoc = async (exportLanguage) => {
+  if (timelineRef.current) {
+    try {
+      setIsExporting(true);
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const margin = 20;
+      let yPosition = margin;
+      const lineHeight = 7;
+
+      pdf.setFontSize(18);
+      pdf.setFont('helvetica', 'bold');
+      pdf.text(title[exportLanguage], margin, yPosition);
+      yPosition += lineHeight * 2;
+
+      timelineData.forEach((entry) => {
+        if (yPosition > 270) {
+          pdf.addPage();
+          yPosition = margin;
+        }
+
+        pdf.setFontSize(14);
+        pdf.setFont('helvetica', 'bold');
+        const yearTitle = `${entry.year} - ${entry.title[exportLanguage]}`;
+        const splitYearTitle = pdf.splitTextToSize(yearTitle, pageWidth - 2 * margin);
+        pdf.text(splitYearTitle, margin, yPosition);
+        yPosition += lineHeight * splitYearTitle.length;
+
+        pdf.setFontSize(12);
+        pdf.setFont('helvetica', 'normal');
+        const description = entry.description[exportLanguage];
+        const splitDescription = pdf.splitTextToSize(description, pageWidth - 2 * margin);
+        
+        if (yPosition + (lineHeight * splitDescription.length) > 270) {
+          pdf.addPage();
+          yPosition = margin;
+        }
+        
+        pdf.text(splitDescription, margin, yPosition);
+        yPosition += (lineHeight * splitDescription.length) + lineHeight;
+      });
+
+      pdf.save(`${title[exportLanguage].replace(/\s+/g, '-').toLowerCase()}-document.pdf`);
+    } catch (error) {
+      console.error('Error generating document PDF:', error);
+    } finally {
+      setIsExporting(false);
+    }
+  }
+};
 
   if (!isActive) return null;
 
