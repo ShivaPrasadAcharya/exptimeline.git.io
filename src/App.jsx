@@ -261,6 +261,7 @@ const TimelineEntry = ({ data, isActive, onClick, index, language, showContent, 
 const Timeline = ({ timelineData, title, index, language, isActive, showContent, searchTerm, currentMatchIndex }) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const timelineRef = useRef(null);
+  const [isExporting, setIsExporting] = useState(false);  // Add this line here
 
   const handleIndexClick = (idx) => {
     setActiveIndex(idx);
