@@ -155,17 +155,17 @@ const Timeline = ({
   return (
     <Card className="w-full max-w-3xl mx-auto mb-8">
       <CardContent className="p-4" ref={timelineRef}>
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
-            {title[language]}
-          </h2>
-          <ExportDropdown 
-            isExporting={isExporting} 
-            language={language} 
-            onExportImage={exportToPDFAsImage} 
-            onExportDoc={exportToPDFAsDoc} 
-          />
-        </div>
+       <div className="flex justify-between items-center mb-6">
+  <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+    {title[language]}
+  </h2>
+  <ExportDropdown 
+    isExporting={isExporting} 
+    language={language} 
+    onExportImage={exportToPDFAsImage} 
+    onExportDoc={exportToPDFAsDoc} 
+  />
+</div>
 
         <IndexSection 
           index={index}
