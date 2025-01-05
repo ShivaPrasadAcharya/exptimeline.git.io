@@ -201,9 +201,9 @@ const Timeline = ({
         </div>
         <div className="mt-8 pt-4 border-t border-gray-200">
           <p className="text-right text-sm text-gray-600 italic">
-            Shiva Prasad Acharya
+           टिपोटः शिवप्रसाद आचार्य
             <br />
-            Supreme Court (2081)
+            इजलास अधिकृत, संवैधानिक इजलास (२०८१।०९।२१)
           </p>
         </div>
       </CardContent>
