@@ -21,7 +21,7 @@ data:[
 "en": "n/a",
 "ne": "Happy Hour ले MOCTCA बाट १० ठाउँमा Electronic casino संचालन गर्न पाउने अनुमति प्राप्त"
 },
-"category": "license"
+"category": "court"
 },
 {
 "year": "2068/01/16",
@@ -33,7 +33,7 @@ data:[
 "en": "n/a",
 "ne": "Hotel NANSC Resort, सिद्धार्थनगर (भैरहवा) को परिसरमा 10 वर्षको लागि Electronic casino संचालन गर्न दिने सम्झौता"
 },
-"category": "agreement"
+"category": "complaint"
 },
 {
 "year": "2068/01/20",
@@ -45,7 +45,7 @@ data:[
 "en": "n/a",
 "ne": "Hotel NANSC ले Rupa International लाई mini casino संचालनको लागि 10 वर्षको बहाल सम्झौता"
 },
-"category": "agreement"
+"category": "sub-contract"
 },
 {
 "year": "2070/04/15",
