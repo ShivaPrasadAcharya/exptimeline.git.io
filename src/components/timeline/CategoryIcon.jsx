@@ -21,8 +21,8 @@ import {
 const CategoryIcon = ({ category }) => {
   const iconClass = "w-5 h-5";
   
-  const getIconStyle = (cat) => {
-    switch (cat) {
+  const getIconStyle = () => {
+    switch (category) 
       case 'license_grant':
         return {
           icon: FileCheck,
@@ -104,7 +104,7 @@ const CategoryIcon = ({ category }) => {
     }
   };
   
-  const { icon: Icon, color, bgColor } = getIconStyle(category);  // Fixed: Passing the category prop
+  const { icon: Icon, color, bgColor } = getIconStyle();
   
   return (
     <div className={`${bgColor} p-1.5 rounded-full`}>
