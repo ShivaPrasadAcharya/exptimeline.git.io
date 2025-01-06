@@ -1,7 +1,7 @@
 // src/App.jsx
 import React, { useState } from 'react';
-import {Globe2, Eye, EyeOff, Menu} from 'lucide-react';
-import {Select, SelectContent, SelectItem, SelectTrigger,  SelectValue,} from "@/components/ui/select";
+import {Globe2, Eye, EyeOff} from 'lucide-react';
+import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select";
 import Timeline from './components/timeline/Timeline';
 import SearchBar from './components/SearchBar';
 import { useSearch } from './hooks/useSearch';
@@ -11,7 +11,6 @@ function App() {
   const [language, setLanguage] = useState('en');
   const [activeTimeline, setActiveTimeline] = useState(Object.keys(timelineGroups)[0]);
   const [showContent, setShowContent] = useState(true);
-  const [isHeaderVisible, setIsHeaderVisible] = useState(false);
 
   // Use the search hook for all search functionality
   const {
@@ -25,25 +24,8 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
-      {/* Menu Trigger */}
-      <div 
-        className="fixed top-4 left-4 z-50 cursor-pointer"
-        onMouseEnter={() => setIsHeaderVisible(true)}
-      >
-        <div className="p-2 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-300">
-          <Menu className="w-6 h-6 text-gray-600" />
-        </div>
-      </div>
-
-      {/* Floating Header Menu */}
-      <div 
-        className={`fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm shadow-md z-40 transition-all duration-300 ${
-          isHeaderVisible 
-            ? 'opacity-100 transform translate-y-0' 
-            : 'opacity-0 transform -translate-y-full pointer-events-none'
-        }`}
-        onMouseLeave={() => setIsHeaderVisible(false)}
-      >
+      {/* Fixed Header */}
+      <header className="fixed top-0 left-0 right-0 bg-white shadow-md z-40">
         <div className="max-w-7xl mx-auto px-4 py-3">
           <div className="flex flex-col md:flex-row items-center gap-4">
             <div className="flex items-center gap-4 w-full md:w-auto">
@@ -101,10 +83,10 @@ function App() {
             </button>
           </div>
         </div>
-      </div>
+      </header>
 
-      {/* Main Content */}
-      <div className="px-4 py-6">
+      {/* Main Content - Added padding-top to account for fixed header */}
+      <div className="px-4 py-6 pt-24">
         {Object.values(timelineGroups).map((timeline) => (
           <Timeline
             key={timeline.id}
