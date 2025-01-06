@@ -1,100 +1,95 @@
 // src/components/timeline/CategoryIcon.jsx
 import React from 'react';
-import {
-  FileContract,
-  FileCheck,
+import { 
+FileSignature, Files, AlertTriangle, 
+  FileText,
+  Building,
+  Eye,
   Scale,
-  ScrollText,
-  Building2,
-  AlertCircle,
-  File,
-  FileWarning,
-  GanttChart,
-  Gavel,
-  Bell,
-  BookOpen,
-  FileOutput,
-  Newspaper,
-  PrayingHands
+  HeartHandshake,
+  Laptop,
+  BarChart,
+  HelpCircle
 } from 'lucide-react';
 
+const CategoryIcon = ({ category }) => {
+  const iconClass = "w-5 h-5";
+  
   const getIconStyle = () => {
     switch (category) {
-      case 'license_grant':
+     case 'contract':
+  return {
+    icon: FileSignature, // A document with a signature line icon
+    color: 'text-blue-500',
+    bgColor: 'bg-blue-50'
+  };
+
+case 'sub-lease-contract':
+  return {
+    icon: Files, // Stacked documents icon representing related contracts
+    color: 'text-indigo-500',
+    bgColor: 'bg-indigo-50'
+  };
+
+case 'conflict':
+  return {
+    icon: AlertTriangle, // Warning triangle icon suggesting dispute
+    color: 'text-amber-500',
+    bgColor: 'bg-amber-50'
+  };
+
+case 'court':
+  return {
+    icon: Scale, // Justice scale icon representing legal proceedings
+    color: 'text-purple-500',
+    bgColor: 'bg-purple-50'
+  };
+ case 'complaint':
         return {
-          icon: FileCheck,
-          color: 'text-green-500',
-          bgColor: 'bg-green-50'
-        };
-      case 'contract_agreement':
-        return {
-          icon: FileContract,
-          color: 'text-blue-500',
-          bgColor: 'bg-blue-50'
-        };
-      case 'contract_implementation':
-        return {
-          icon: GanttChart,
-          color: 'text-purple-500',
-          bgColor: 'bg-purple-50'
-        };
-      case 'court_order':
-        return {
-          icon: Gavel,
-          color: 'text-amber-500',
-          bgColor: 'bg-amber-50'
-        };
-      case 'legal_proceeding':
-        return {
-          icon: Scale,
-          color: 'text-orange-500',
-          bgColor: 'bg-orange-50'
-        };
-      case 'administrative_order':
-        return {
-          icon: ScrollText,
+          icon: FileText,
           color: 'text-red-500',
           bgColor: 'bg-red-50'
         };
-      case 'enforcement_action':
+
+      case 'administration':
         return {
-          icon: AlertCircle,
-          color: 'text-rose-500',
-          bgColor: 'bg-rose-50'
+          icon: Building,
+          color: 'text-blue-500',
+          bgColor: 'bg-blue-50'
         };
-      case 'administrative_notification':
+      case 'monitoring':
         return {
-          icon: Bell,
+          icon: Eye,
+          color: 'text-purple-500',
+          bgColor: 'bg-purple-50'
+        };
+      case 'governance':
+        return {
+          icon: Scale,
+          color: 'text-green-500',
+          bgColor: 'bg-green-50'
+        };
+      case 'service':
+        return {
+          icon: HeartHandshake,
+          color: 'text-orange-500',
+          bgColor: 'bg-orange-50'
+        };
+      case 'digital':
+        return {
+          icon: Laptop,
           color: 'text-cyan-500',
           bgColor: 'bg-cyan-50'
         };
-      case 'administrative_petition':
+      case 'planning':
         return {
-          icon: BookOpen,
-          color: 'text-teal-500',
-          bgColor: 'bg-teal-50'
-        };
-      case 'contract_termination':
-        return {
-          icon: FileWarning,
-          color: 'text-pink-500',
-          bgColor: 'bg-pink-50'
-        };
-      case 'public_notice':
-        return {
-          icon: Newspaper,
-          color: 'text-indigo-500',
-          bgColor: 'bg-indigo-50'
-        };
-      case 'greeting':
-        return {
-          icon: PrayingHands,
-          color: 'text-emerald-500',
-          bgColor: 'bg-emerald-50'
+          icon: BarChart,
+          color: 'text-yellow-500',
+          bgColor: 'bg-yellow-50'
         };
       default:
         return {
-          icon: File,
+          icon: HelpCircle,
           color: 'text-gray-500',
           bgColor: 'bg-gray-50'
         };
@@ -109,7 +104,5 @@ import {
     </div>
   );
 };
-
-export default CategoryIcon;
 
 export default CategoryIcon;
