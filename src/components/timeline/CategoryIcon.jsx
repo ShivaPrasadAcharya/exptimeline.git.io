@@ -9,21 +9,14 @@ FileSignature, Files, AlertTriangle,
   HeartHandshake,
   Laptop,
   BarChart,
-  HelpCircle,
-  PrayingHands
-} from 'lucide-react';
+  HelpCircle
+  } from 'lucide-react';
 
 const CategoryIcon = ({ category }) => {
   const iconClass = "w-5 h-5";
   
   const getIconStyle = () => {
     switch (category) {
-case 'greeting':
-        return {
-          icon: PrayingHands,
-          color: 'text-emerald-500',
-          bgColor: 'bg-emerald-50'
-        };
      case 'contract':
   return {
     icon: FileSignature, // A document with a signature line icon
