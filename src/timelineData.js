@@ -40,7 +40,7 @@ data:[
     "category": "contract"
   },
   {
-    "year": "२०६७ साउन २३",
+    "year": "2067/04/23",
     "title": {
       "en": "MOCTCA ले Happy Hour लाई १० स्थानमा Electronic casino सञ्चालन गर्न अनुमति प्रदान",
       "ne": ""
@@ -52,7 +52,7 @@ data:[
     "category": "license_grant"
   },
   {
-    "year": "२०६८ बैशाख १६",
+    "year": "2068/01/16",
     "title": {
       "en": "Happy Hour र Rupa International बीच करार सम्झौता",
       "ne": ""
@@ -64,7 +64,7 @@ data:[
     "category": "contract_agreement"
   },
   {
-    "year": "२०६८ बैशाख २०",
+    "year": "2068/01/20",
     "title": {
       "en": "Hotel NANSC र Rupa International बीच करार सम्झौता",
       "ne": ""
@@ -72,35 +72,10 @@ data:[
     "description": {
       "en": "होटलले mini casino सञ्चालनको लागि १० वर्षको लागि आफ्नो घरजग्गा बहालमा दिने",
       "ne": ""
-    },
-    "category": "contract_agreement"
+    }
   },
   {
-    "year": "२०६८ जेठ १",
-    "title": {
-      "en": "दुवै करार सम्झौताहरू कार्यान्वयनमा आउने मिति",
-      "ne": ""
-    },
-    "description": {
-      "en": "दुवै करार सम्झौताहरू कार्यान्वयनमा आउने मिति",
-      "ne": ""
-    },
-    "category": "contract_implementation"
-  },
-  {
-    "year": "२०७० साउन १५",
-    "title": {
-      "en": "सर्वोच्च अदालतबाट अन्तरिम आदेश जारी",
-      "ne": ""
-    },
-    "description": {
-      "en": "Happy Hour लाई casino सञ्चालन गर्न पाउने गरी सर्वोच्च अदालतबाट अन्तरिम आदेश जारी",
-      "ne": ""
-    },
-    "category": "court_order"
-  },
-  {
-    "year": "२०७३ मंसिर १६",
+    "year": "2073/08/16",
     "title": {
       "en": "Rupa International को जिल्ला अदालतमा निवेदन दर्ता",
       "ne": ""
@@ -112,7 +87,7 @@ data:[
     "category": "legal_proceeding"
   },
   {
-    "year": "२०७३ चैत १०",
+    "year": "2073/12/10",
     "title": {
       "en": "उच्च अदालत पाटनबाट अन्तरकालीन आदेश जारी",
       "ne": ""
@@ -124,7 +99,7 @@ data:[
     "category": "court_order"
   },
   {
-    "year": "२०७४ बैशाख १२",
+    "year": "2074/01/12",
     "title": {
       "en": "पर्यटन विभागले क्यासिनो बन्द गर्न पत्राचार",
       "ne": ""
@@ -136,7 +111,7 @@ data:[
     "category": "administrative_order"
   },
   {
-    "year": "२०७४ बैशाख १४",
+    "year": "2074/01/14",
     "title": {
       "en": "प्रहरीद्वारा क्यासिनो बन्द",
       "ne": ""
@@ -148,7 +123,7 @@ data:[
     "category": "enforcement_action"
   },
   {
-    "year": "२०७४ बैशाख १५",
+    "year": "2074/01/15",
     "title": {
       "en": "क्यासिनो बन्द गराएको जानकारी",
       "ne": ""
@@ -160,7 +135,7 @@ data:[
     "category": "administrative_notification"
   },
   {
-    "year": "२०७४ बैशाख १७",
+    "year": "2074/01/17",
     "title": {
       "en": "पर्यटन विभागमा निवेदन दर्ता",
       "ne": ""
@@ -172,7 +147,7 @@ data:[
     "category": "administrative_petition"
   },
   {
-    "year": "२०७४ बैशाख २०",
+    "year": "2074/01/20",
     "title": {
       "en": "सर्वोच्च अदालतमा रिट निवेदन दायर",
       "ne": ""
@@ -184,7 +159,7 @@ data:[
     "category": "legal_proceeding"
   },
   {
-    "year": "२०७४ बैशाख २४",
+    "year": "2074/01/24",
     "title": {
       "en": "सर्वोच्च अदालतबाट अन्तरिम आदेश जारी",
       "ne": ""
@@ -196,7 +171,7 @@ data:[
     "category": "court_order"
   },
   {
-    "year": "२०७४ असार १९",
+    "year": "2074/03/19",
     "title": {
       "en": "करार सम्झौता भंग",
       "ne": ""
@@ -208,7 +183,7 @@ data:[
     "category": "contract_termination"
   },
   {
-    "year": "२०७४ मंसिर १",
+    "year": "2074/08/01",
     "title": {
       "en": "करार सम्झौता भंग सूचना प्रकाशन",
       "ne": ""
