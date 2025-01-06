@@ -1,7 +1,129 @@
 //timeline data
 export const timelineGroups = {
-casino:{
-id:'casino',
+casino1:{
+id:'casino1',
+title:{
+en: 'Casino Case',
+ne: 'क्यासिनोको मुद्दा'
+},
+ index: {
+      en: [],
+      ne: [ ]
+    },
+data:[
+{
+"year": "2067/05/23",
+"title": {
+"en": "n/a",
+"ne": "च.न. 470, मिति 2067/05/23 को पत्रबाट Happy Hour लाई अनुमति"
+},
+"description": {
+"en": "n/a",
+"ne": "Happy Hour ले MOCTCA बाट १० ठाउँमा Electronic casino संचालन गर्न पाउने अनुमति प्राप्त"
+},
+"category": "license"
+},
+{
+"year": "2068/01/16",
+"title": {
+"en": "n/a",
+"ne": "Happy Hour र Rupa International बीच करार सम्झौता"
+},
+"description": {
+"en": "n/a",
+"ne": "Hotel NANSC Resort, सिद्धार्थनगर (भैरहवा) को परिसरमा 10 वर्षको लागि Electronic casino संचालन गर्न दिने सम्झौता"
+},
+"category": "agreement"
+},
+{
+"year": "2068/01/20",
+"title": {
+"en": "n/a",
+"ne": "Hotel NANSC र Rupa International बीच करार सम्झौता"
+},
+"description": {
+"en": "n/a",
+"ne": "Hotel NANSC ले Rupa International लाई mini casino संचालनको लागि 10 वर्षको बहाल सम्झौता"
+},
+"category": "agreement"
+},
+{
+"year": "2070/04/15",
+"title": {
+"en": "n/a",
+"ne": "सर्वोच्च अदालतबाट अन्तरिम आदेश"
+},
+"description": {
+"en": "n/a",
+"ne": "Happy Hour ले casino संचालन गर्न पाउने गरी सर्वोच्च अदालतबाट अन्तरिम आदेश जारी"
+},
+"category": "court_order"
+},
+{
+"year": "2073/12/10",
+"title": {
+"en": "n/a",
+"ne": "उच्च अदालत पाटनबाट अन्तरकालिन आदेश"
+},
+"description": {
+"en": "n/a",
+"ne": "करार संझौता विपरीत कार्य नगर्नु नगराउनु भनी Happy Hour को नाउँमा अन्तरकालिन आदेश जारी"
+},
+"category": "court_order"
+},
+{
+"year": "2074/01/12",
+"title": {
+"en": "n/a",
+"ne": "पर्यटन विभागको पत्राचार"
+},
+"description": {
+"en": "n/a",
+"ne": "Hotel NASC मा संचालित क्यासिनो तुरन्त बन्द गर्न जिल्ला प्रशासन कार्यालय भैरहवालाई निर्देशन"
+},
+"category": "administrative_action"
+},
+{
+"year": "2074/01/14",
+"title": {
+"en": "n/a",
+"ne": "क्यासिनो बन्द"
+},
+"description": {
+"en": "n/a",
+"ne": "जिल्ला प्रहरी कार्यलय भैरहवाबाट Hotel NANSC Resort मा संचालित mini casino बन्द गराइएको"
+},
+"category": "enforcement"
+},
+{
+"year": "2074/01/24",
+"title": {
+"en": "n/a",
+"ne": "सर्वोच्च अदालतबाट अन्तरिम आदेश"
+},
+"description": {
+"en": "n/a",
+"ne": "073-wo-1173 को रिट निवेदनमा अन्तरिम आदेश जारी"
+},
+"category": "court_order"
+},
+{
+"year": "2074/08/01",
+"title": {
+"en": "n/a",
+"ne": "करार सम्झौता भंग सूचना"
+},
+"description": {
+"en": "n/a",
+"ne": "Happy Hour र Rupa International बीचको सम्झौता मिति 2074/03/19 देखि भंग भएको सूचना सौर्य दैनिकमा प्रकाशित"
+},
+"category": "notice"
+}
+]
+},
+  
+casino2:{
+id:'casino2',
 title:{
 en: 'Casino Case',
 ne: 'क्यासिनोको मुद्दा'
