@@ -18,7 +18,7 @@ const CategoryIcon = ({ category }) => {
   
   const getIconStyle = () => {
     switch (category) {
-case 'greeting':
+case 'namaskar':
         return {
           icon: PrayingHands,
           color: 'text-emerald-500',
