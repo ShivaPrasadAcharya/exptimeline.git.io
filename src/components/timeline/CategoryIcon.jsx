@@ -21,105 +21,114 @@ import {
 const CategoryIcon = ({ category }) => {
   const iconClass = "w-5 h-5";
   
-  const getIconStyle = () => {
-    switch (category) {
-     case 'license_grant':
-      return {
-        icon: FileCheck, // Checkmark document icon for license/permit
-        color: 'text-green-500',
-        bgColor: 'bg-green-50'
-      };
+  const getIconStyle = (cat) => {
+    switch (cat) {
+      case 'license_grant':
+        return {
+          icon: FileCheck,
+          color: 'text-green-500',
+          bgColor: 'bg-green-50'
+        };
 
-    case 'contract_agreement':
-      return {
-        icon: FileContract, // Contract document icon
-        color: 'text-blue-500',
-        bgColor: 'bg-blue-50'
-      };
+      case 'contract_agreement':
+        return {
+          icon: FileContract,
+          color: 'text-blue-500',
+          bgColor: 'bg-blue-50'
+        };
 
-    case 'contract_implementation':
-      return {
-        icon: GanttChart, // Timeline/implementation icon
-        color: 'text-purple-500',
-        bgColor: 'bg-purple-50'
-      };
+      case 'contract_implementation':
+        return {
+          icon: GanttChart,
+          color: 'text-purple-500',
+          bgColor: 'bg-purple-50'
+        };
 
-    case 'court_order':
-      return {
-        icon: Gavel, // Gavel/justice icon
-        color: 'text-amber-500',
-        bgColor: 'bg-amber-50'
-      };
+      case 'court_order':
+        return {
+          icon: Gavel,
+          color: 'text-amber-500',
+          bgColor: 'bg-amber-50'
+        };
 
-    case 'legal_proceeding':
-      return {
-        icon: Scale, // Scale of justice icon
-        color: 'text-orange-500',
-        bgColor: 'bg-orange-50'
-      };
+      case 'legal_proceeding':
+        return {
+          icon: Scale,
+          color: 'text-orange-500',
+          bgColor: 'bg-orange-50'
+        };
 
-    case 'administrative_order':
-      return {
-        icon: ScrollText, // Official document/scroll icon
-        color: 'text-red-500',
-        bgColor: 'bg-red-50'
-      };
+      case 'administrative_order':
+        return {
+          icon: ScrollText,
+          color: 'text-red-500',
+          bgColor: 'bg-red-50'
+        };
 
-    case 'enforcement_action':
-      return {
-        icon: AlertCircle, // Alert/action icon
-        color: 'text-rose-500',
-        bgColor: 'bg-rose-50'
-      };
+      case 'enforcement_action':
+        return {
+          icon: AlertCircle,
+          color: 'text-rose-500',
+          bgColor: 'bg-rose-50'
+        };
 
-    case 'administrative_notification':
-      return {
-        icon: Bell, // Notification bell icon
-        color: 'text-cyan-500',
-        bgColor: 'bg-cyan-50'
-      };
+      case 'administrative_notification':
+        return {
+          icon: Bell,
+          color: 'text-cyan-500',
+          bgColor: 'bg-cyan-50'
+        };
 
-    case 'administrative_petition':
-      return {
-        icon: BookOpen, // Open book/petition icon
-        color: 'text-teal-500',
-        bgColor: 'bg-teal-50'
-      };
+      case 'administrative_petition':
+        return {
+          icon: BookOpen,
+          color: 'text-teal-500',
+          bgColor: 'bg-teal-50'
+        };
 
-    case 'contract_termination':
-      return {
-        icon: FileWarning, // Warning document icon
-        color: 'text-pink-500',
-        bgColor: 'bg-pink-50'
-      };
+      case 'contract_termination':
+        return {
+          icon: FileWarning,
+          color: 'text-pink-500',
+          bgColor: 'bg-pink-50'
+        };
 
-    case 'public_notice':
-      return {
-        icon: Newspaper, // Newspaper/publication icon
-        color: 'text-indigo-500',
-        bgColor: 'bg-indigo-50'
-      };
+      case 'public_notice':
+        return {
+          icon: Newspaper,
+          color: 'text-indigo-500',
+          bgColor: 'bg-indigo-50'
+        };
 
-    case 'greeting':
-      return {
-        icon: PrayingHands, // Praying hands/Namaste icon for traditional Indian greeting
-        color: 'text-emerald-500',
-        bgColor: 'bg-emerald-50'
-      };
+      case 'greeting':
+        return {
+          icon: PrayingHands,
+          color: 'text-emerald-500',
+          bgColor: 'bg-emerald-50'
+        };
+
       default:
         return {
-          icon: HelpCircle,
+          icon: File,
           color: 'text-gray-500',
           bgColor: 'bg-gray-50'
         };
     }
   };
-  
-  const { icon: Icon, color, bgColor } = getIconStyle();
+
+  // Handle both array and single category
+  const categories = Array.isArray(category) ? category : [category];
   
   return (
-    <div className={`${bgColor} p-1.5 rounded-full`}>
-      <Icon className={`${iconClass} ${color} stroke-2`} />
+    <div className="flex gap-1">
+      {categories.map((cat, index) => {
+        const { icon: Icon, color, bgColor } = getIconStyle(cat);
+        return (
+          <div key={index} className={`${bgColor} p-1.5 rounded-full`}>
+            <Icon className={`${iconClass} ${color} stroke-2`} />
+          </div>
+        );
+      })}
     </div>
   );
 };
