@@ -1,16 +1,16 @@
 //timeline data
-//casino1:{
-//id:'casino1',
-//title:{
-//en: 'Casino Case',
-//ne: 'क्यासिनोको मुद्दा'
-//},
- //index: {
-      //en: [],
-      //ne: [ ]
-   // },
-//data:[]
-//},
+/*casino1:{
+id:'casino1',
+title:{
+en: 'Casino Case',
+ne: 'क्यासिनोको मुद्दा'
+},
+ index: {
+      en: [],
+      ne: [ ]
+    },
+data:[]
+},*/
 export const timelineGroups = {
 casino3:{
 id:'casino3',
@@ -19,7 +19,9 @@ en: 'Casino-073-WO-1173',
 ne: ''
 },
  index: {
-      en: [IPO-इलाका प्रहरी कार्यालय],
+      en: ["1.IPO-इलाका प्रहरी कार्यालय",
+            "2. MOH-गृह मन्त्रालय"
+          ],
       ne: [ ]
     },
 data:[
