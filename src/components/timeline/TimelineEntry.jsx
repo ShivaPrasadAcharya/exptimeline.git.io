@@ -1,6 +1,6 @@
 // src/components/timeline/TimelineEntry.jsx
 import React, { useState } from 'react';
-import CategoryIcon from './CategoryIcon';
+import CategoryIcon from './CategoryIcon.jsx';
 import HighlightedText from './HighlightedText';
 
 const TimelineEntry = ({ 
