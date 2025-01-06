@@ -1,5 +1,6 @@
 //timeline data
-/*casino1:{
+/*
+casino1:{
 id:'casino1',
 title:{
 en: 'Casino Case',
@@ -10,7 +11,8 @@ ne: 'क्यासिनोको मुद्दा'
       ne: [ ]
     },
 data:[]
-},*/
+},
+*/
 export const timelineGroups = {
 casino3:{
 id:'casino3',
@@ -25,6 +27,18 @@ ne: ''
       ne: [ ]
     },
 data:[
+  {
+    "year": "नमो नमः",
+    "title": {
+      "en": "क्यासिनो केस टिपोटक timeline मा स्वागत छ ",
+      "ne": ""
+    },
+    "description": {
+      "en": "यो timeline लाई AI को सहयोग मार्फत बनाइएको हो।",
+      "ne": ""
+    },
+    "category": "namaskar"
+  },
   {
     "year": "२०६७ साउन २३",
     "title": {
