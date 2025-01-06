@@ -37,7 +37,7 @@ data:[
       "en": "यो timeline लाई AI को सहयोग मार्फत बनाइएको हो।",
       "ne": ""
     },
-    "category": "greeting"
+    "category": "contract"
   },
   {
     "year": "२०६७ साउन २३",
