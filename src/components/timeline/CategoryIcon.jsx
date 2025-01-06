@@ -18,11 +18,8 @@ import {
   PrayingHands
 } from 'lucide-react';
 
-const CategoryIcon = ({ category }) => {
-  const iconClass = "w-5 h-5";
-  
   const getIconStyle = () => {
-    switch (category) 
+    switch (category) {
       case 'license_grant':
         return {
           icon: FileCheck,
@@ -112,5 +109,7 @@ const CategoryIcon = ({ category }) => {
     </div>
   );
 };
+
+export default CategoryIcon;
 
 export default CategoryIcon;
