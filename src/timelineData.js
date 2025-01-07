@@ -180,13 +180,13 @@ export const timelineGroups = {
         "category": "brokenheart"
       },
      {
-        "year": "विविध खण्ड- यहाँबाट ",
+        "year": "विविध खण्ड (MISCELLANEOUS)- यहाँबाट ",
         "title": {
           "en": "लिखित जावफ इत्यादि ",
           "ne": ""
         },
         "description": {
-          "en": "MISCELLANEOUS",
+          "en": "",
           "ne": ""
         },
         "category": "namaskar"
@@ -209,7 +209,7 @@ export const timelineGroups = {
         "category": "namaskar"
       }, 
      {
-        "year": "CDO, रूपन्देहीः",
+        "year": "CDO, रूपन्देही",
         "title": {
           "en": " पर्यटन विभाग (hotel & homestay) महाशाखाको च.नं. 6097, 2074/1/12 को पत्रानुसार नै जिल्ला प्रहरी कार्यालयलाई 2074/01/14 मा पत्र लेखिएको हो",
           "ne": ""
@@ -218,7 +218,7 @@ export const timelineGroups = {
           "en": "",
           "ne": ""
         },
-        "category": ""
+        "category": "none"
       },
      {
         "year": "जिल्ला प्रहरी कार्यालय रूपन्देही",
@@ -230,7 +230,7 @@ export const timelineGroups = {
           "en": "",
           "ne": ""
         },
-        "category": ""
+        "category": "none"
       },
       {
         "year": "सदस्य-अध्यक्ष conflict- कीर्ते जालसाजी मुद्दा",
