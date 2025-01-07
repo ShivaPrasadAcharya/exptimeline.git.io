@@ -191,7 +191,7 @@ export const timelineGroups = {
       },
      
  {
-        "year": "CDO, रूपन्देहीको लिखितत जवाफ",
+        "year": "CDO, रूपन्देहीको लिखित जवाफ",
         "title": {
           "en": "",
           "ne": ""
