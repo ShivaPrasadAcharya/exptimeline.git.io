@@ -13,17 +13,7 @@ import {
   Building2,
   FileWarning,
   Scroll,
-  Heart,
-  Handshake,
-  Clock,
-  Ban,
-  Folder,
-  Shield,
-  UserX,
-  Gavel,
-  FileSearch,
-  MessageSquare,
-  FileLock2
+  Heart
 } from 'lucide-react';
 
 const CategoryIcon = ({ category }) => {
@@ -31,7 +21,6 @@ const CategoryIcon = ({ category }) => {
   
   const getIconStyle = () => {
     switch (category) {
-      // Existing categories
       case 'namaskar':
         return {
           icon: HeartHandshake,
@@ -40,129 +29,67 @@ const CategoryIcon = ({ category }) => {
         };
       case 'casino':
         return {
-          icon: CircleDollarSign,
+          icon: CircleDollarSign, // Money/casino icon
           color: 'text-green-500',
           bgColor: 'bg-green-50'
         };
       case 'contract':
         return {
-          icon: FileSignature,
+          icon: FileSignature, // Document signing icon
           color: 'text-blue-500',
           bgColor: 'bg-blue-50'
         };
       case 'court':
         return {
-          icon: Scale,
+          icon: Scale, // Justice scale icon
           color: 'text-purple-500',
           bgColor: 'bg-purple-50'
         };
       case 'circular':
         return {
-          icon: Scroll,
+          icon: Scroll, // Official document/circular icon
           color: 'text-amber-500',
           bgColor: 'bg-amber-50'
         };
-      case 'closeddoor':
+      case 'police':
         return {
-          icon: Building2,
+          icon: Building2, // Police station/official building icon
           color: 'text-slate-500',
           bgColor: 'bg-slate-50'
         };
       case 'notification':
         return {
-          icon: Bell,
+          icon: Bell, // Notification bell icon
           color: 'text-orange-500',
           bgColor: 'bg-orange-50'
         };
-      case 'complaint':
+      case 'review':
         return {
-          icon: FileWarning,
-          color: 'text-red-500',
-          bgColor: 'bg-red-50'
-        };
-      case 'complaint2':
-        return {
-          icon: Files,
+          icon: FileText, // Document review icon
           color: 'text-indigo-500',
           bgColor: 'bg-indigo-50'
         };
+      case 'complaint':
+        return {
+          icon: FileWarning, // Warning document icon
+          color: 'text-red-500',
+          bgColor: 'bg-red-50'
+        };
       case 'brokenheart':
         return {
-          icon: Heart,
+          icon: Heart, // Heart icon for broken agreements
           color: 'text-rose-500',
           bgColor: 'bg-rose-50'
         };
       case 'conflict':
         return {
-          icon: AlertTriangle,
+          icon: AlertTriangle, // Warning/conflict icon
           color: 'text-amber-500',
           bgColor: 'bg-amber-50'
         };
-
-      // New legal timeline specific categories
-      case 'subcontract':
-        return {
-          icon: Handshake, // Agreement between parties
-          color: 'text-cyan-500',
-          bgColor: 'bg-cyan-50'
-        };
-      case 'deadline':
-        return {
-          icon: Clock, // Time-sensitive matters
-          color: 'text-yellow-500',
-          bgColor: 'bg-yellow-50'
-        };
-      case 'termination':
-        return {
-          icon: Ban, // Contract termination
-          color: 'text-red-600',
-          bgColor: 'bg-red-50'
-        };
-      case 'documentation':
-        return {
-          icon: Folder, // Legal documentation
-          color: 'text-blue-600',
-          bgColor: 'bg-blue-50'
-        };
-      case 'compliance':
-        return {
-          icon: Shield, // Regulatory compliance
-          color: 'text-green-600',
-          bgColor: 'bg-green-50'
-        };
-      case 'breach':
-        return {
-          icon: UserX, // Contract breach
-          color: 'text-red-500',
-          bgColor: 'bg-red-50'
-        };
-      case 'judgment':
-        return {
-          icon: Gavel, // Court judgment
-          color: 'text-purple-600',
-          bgColor: 'bg-purple-50'
-        };
-      case 'investigation':
-        return {
-          icon: FileSearch, // Legal investigation
-          color: 'text-indigo-600',
-          bgColor: 'bg-indigo-50'
-        };
-      case 'mediation':
-        return {
-          icon: MessageSquare, // Dispute mediation
-          color: 'text-teal-500',
-          bgColor: 'bg-teal-50'
-        };
-      case 'confidential':
-        return {
-          icon: FileLock2, // Confidential documents
-          color: 'text-slate-600',
-          bgColor: 'bg-slate-50'
-        };
       case 'none':
         return {
-          icon: Files,
+          icon: Files, // Generic files icon
           color: 'text-gray-500',
           bgColor: 'bg-gray-50'
         };
