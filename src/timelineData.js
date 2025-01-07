@@ -1,8 +1,21 @@
 //timeline data
 /*
+casino1:{
+id:'casino1',
+title:{
+en: 'Casino Case-1',
+ne: 'क्यासिनोको मुद्दा'
+},
+ index: {
+      en: [],
+      ne: [ ]
+    },
+data:[]
+},
+*/
 export const timelineGroups = {
-  casino3: {
-    id: 'casino3',
+  casino1173: {
+    id: 'casino1173',
     title: {
       en: 'Casino-073-WO-1173',
       ne: ''
@@ -168,4 +181,4 @@ export const timelineGroups = {
       }
     ]
   }
-}
+};
