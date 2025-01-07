@@ -243,7 +243,7 @@ export const timelineGroups = {
           "ne": ""
         },
         "category": "conflict"
-      },
+      }
     ]
   }
 };
