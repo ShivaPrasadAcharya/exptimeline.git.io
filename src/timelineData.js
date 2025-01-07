@@ -67,7 +67,7 @@ export const timelineGroups = {
           "en": "होटल NANSC ले mini casino सञ्चालनको लागि Rupa International लाई १० वर्षको लागि आफ्नो घरजग्गा बहालमा दिने",
           "ne": ""
         },
-        "category": "subcontract"
+        "category": "contract"
       },
       {
         "year": "2073/08/16",
@@ -103,7 +103,7 @@ export const timelineGroups = {
           "en": "जिल्ला प्रहरी कार्यालय भैरहवाको टोलीले Hotel NANSC Resort मा सञ्चालित mini casino बन्द गराएको",
           "ne": ""
         },
-        "category": "closeddoor"
+        "category": "investigation"
       },
       {
         "year": "2074/01/15",
@@ -127,7 +127,7 @@ export const timelineGroups = {
           "en": "Rupa International ले casino बन्द गराएको विषयलाई पुनर्विचार गर्न पर्यटन विभागमा निवेदन दर्ता गराएको (द.नं. १५५६६)",
           "ne": ""
         },
-        "category": "complaint2"
+        "category": "complaint"
       },
       {
         "year": "2074/01/20",
@@ -139,7 +139,7 @@ export const timelineGroups = {
           "en": "निवेदन उपर कुनै कारबाही नभएपछि Rupa International ले सर्वोच्च अदालतमा ०७३-WO-११७३ को रिट निवेदन दायर गरेको",
           "ne": ""
         },
-        "category": "complaint1"
+        "category": "complaint"
       },
       {
         "year": "2074/01/24",
@@ -163,7 +163,7 @@ export const timelineGroups = {
           "en": "Happy Hour द्वारा Rupa International सँगको मिति 2068/1/16 मा भएको करार सम्झौता करार सम्झौताको दफा ९.२ बमोजिम मिति 2074/03/19 देखि लागु हुने गरी भंग गरेको भनी सौर्य दैनिकमा सूचना प्रकाशन गरेको।",
           "ne": ""
         },
-        "category": "brokenheart"
+        "category": "termination"
       },
       {
         "year": "विविध खण्ड (MISCELLANEOUS)",
@@ -187,7 +187,7 @@ export const timelineGroups = {
           "en": "पर्यटन विभाग/MOCTCA:\n- Happy Hour ले ४ वटा मात्र क्यासिनो संचालन गर्न पाउने हो। अन्तरिम आदेश बमोजिम Hotel NANSC मा संचालन हुने क्यासिनो ५ औ हुने भएकोले बन्द गरिएको हो।\n- सर्वोच्च अदालतले मिति 2074/1/24 मा यस विभागलाई सुनुवाईको मौका नै नदिई अन्तरिम आदेश जारी गरेको हुँदा उक्त आदेश बदर समेत गरी पाउँ।\n- सर्वोच्च अदालतको मिति 2071/4/15 को अन्तरिम आदेश बमोजिम मिति 2071/4/21 मा पुनः व्यवसाय संचालन गरेको भनी Happy Hour ले पर्यटन विभागलाई जानकारी गराएकोले Happy Hour को व्यवसाय संचालनमा नै रहेको\n- NANSC Hotel ले Rupa International लाई mini casino संचालन गर्न नदिई मिति 2069/10/15 (करार भएको १ वर्ष नौ महिनामा नै) बन्द गराएको। उक्त Hotel ले Happy Hour लाई हटाई Rock International लाई mini casino संचालन गर्न दिएकोले Rupa International र Happy Hour बीचको करार स्वतः खारेज भएको,\n- Rupa International liquidation को प्रक्रियामा गइसकेको र liquidator को नियुक्ति भइसकेको भनी Happy Hour ले मिति 2069/11/1 देखि Hotel Lakaoul (भैरहवा) मा mini casino संचालन गरेको भनी निवेदन दिएकोले Rupa International ले निरन्तर व्यवसाय संचालन गरेको भनी लिएको दावी आधारहीन रहेको",
           "ne": ""
         },
-        "category": "book"
+        "category": "complaint"
       },
      
  {
@@ -200,7 +200,7 @@ export const timelineGroups = {
           "en": "पर्यटन विभाग (hotel & homestay) महाशाखाको च.नं. 6097, 2074/1/12 को पत्रानुसार नै जिल्ला प्रहरी कार्यालयलाई 2074/01/14 मा पत्र लेखिएको हो",
           "ne": ""
         },
-        "category": "book"
+        "category": "complaint"
       },
       {
         "year": "जिल्ला प्रहरी कार्यालय रूपन्देहीको लिखित जवाफ",
@@ -212,7 +212,7 @@ export const timelineGroups = {
           "en": "जिल्ला प्रशासनको पत्रानुसार casino बन्द गराइएको हो, संचालकलाई जबरजस्ती बाहिर निकाल्ने कार्य गरिएको होइन",
           "ne": ""
         },
-        "category": "book"
+        "category": "complaint"
       },
       {
         "year": "सदस्य-अध्यक्ष conflict- कीर्ते जालसाजी मुद्दा",
@@ -224,7 +224,7 @@ export const timelineGroups = {
           "en": "Rupa International को शेयरधनी एवं संचालक हेमन्तराज कोलाक्षपति (वादी) Vs. Hotel Radison मा संचालित Casino Rad का संचालक मनोज प्रसाद सुवेदी (प्रतिवादी)\n- Rupa International को संचालक सदस्य (वादी) ले अर्को संचालक अध्यक्ष (प्रतिवादी) लाई काठमाडौं जिल्ला अदालतमा मिति 2074/1/14 मा 073-PC-3782 को कीर्ते जालसाजी मद्दा दायर गरेको (हालको स्थितिः वादीको दावी नपुग्ने गरी मिति 2075/02/23 मा फैसला भएको छ)",
           "ne": ""
         },
-        "category": "conflict"
+        "category": "judgement"
       }
     ]
   }
