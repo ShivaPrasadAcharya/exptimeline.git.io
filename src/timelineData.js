@@ -20,8 +20,7 @@ export const timelineGroups = {
       ],
       ne: []
     },
-    data: [
-       data: [
+           data: [
       {
         "year": "नमो नमः",
         "title": {
