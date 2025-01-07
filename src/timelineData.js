@@ -103,7 +103,7 @@ export const timelineGroups = {
           "en": "जिल्ला प्रहरी कार्यालय भैरहवाको टोलीले Hotel NANSC Resort मा सञ्चालित mini casino बन्द गराएको",
           "ne": ""
         },
-        "category": "police"
+        "category": "closeddoor"
       },
       {
         "year": "2074/01/15",
@@ -127,7 +127,7 @@ export const timelineGroups = {
           "en": "Rupa International ले casino बन्द गराएको विषयलाई पुनर्विचार गर्न पर्यटन विभागमा निवेदन दर्ता गराएको (द.नं. १५५६६)",
           "ne": ""
         },
-        "category": "application"
+        "category": "complaint2"
       },
       {
         "year": "2074/01/20",
@@ -139,7 +139,7 @@ export const timelineGroups = {
           "en": "निवेदन उपर कुनै कारबाही नभएपछि Rupa International ले सर्वोच्च अदालतमा ०७३-WO-११७३ को रिट निवेदन दायर गरेको",
           "ne": ""
         },
-        "category": "complaint"
+        "category": "complaint1"
       },
       {
         "year": "2074/01/24",
@@ -175,7 +175,7 @@ export const timelineGroups = {
           "en": "",
           "ne": ""
         },
-        "category": "namaskar"
+        "category": ""
       },
       {
         "year": "MOCTCA/पर्यटन विभागको लिखित जवाफ",
