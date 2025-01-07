@@ -166,9 +166,9 @@ export const timelineGroups = {
         "category": "brokenheart"
       },
       {
-        "year": "विविध खण्ड (MISCELLANEOUS)- यहाँबाट",
+        "year": "विविध खण्ड (MISCELLANEOUS)",
         "title": {
-          "en": "लिखित जावफ इत्यादि",
+          "en": "",
           "ne": ""
         },
         "description": {
@@ -178,9 +178,9 @@ export const timelineGroups = {
         "category": "namaskar"
       },
       {
-        "year": "MOCTCA को लिखित जवाफ",
+        "year": "MOCTCA/पर्यटन विभागको लिखित जवाफ",
         "title": {
-          "en": "पर्यटन विभाग/MOCTCA को लिखित जवाफ",
+          "en": "",
           "ne": ""
         },
         "description": {
@@ -189,22 +189,11 @@ export const timelineGroups = {
         },
         "category": "namaskar"
       },
-      {
-        "year": "CDO, रूपन्देही",
-        "title": {
-          "en": "CDO को लिखित जवाफ",
-          "ne": ""
-        },
-        "description": {
-          "en": "पर्यटन विभाग (hotel & homestay) महाशाखाको च.नं. 6097, 2074/1/12 को पत्रानुसार नै जिल्ला प्रहरी कार्यालयलाई 2074/01/14 मा पत्र लेखिएको हो",
-          "ne": ""
-        },
-        "category": "none"
-      },
+     
  {
-        "year": "CDO, रूपन्देही",
+        "year": "CDO, रूपन्देहीको लिखितत जवाफ",
         "title": {
-          "en": "CDO को लिखित जवाफ",
+          "en": "",
           "ne": ""
         },
         "description": {
@@ -214,9 +203,9 @@ export const timelineGroups = {
         "category": "none"
       },
       {
-        "year": "जिल्ला प्रहरी कार्यालय रूपन्देही",
+        "year": "जिल्ला प्रहरी कार्यालय रूपन्देहीको लिखित जवाफ",
         "title": {
-          "en": "जिल्ला प्रहरी कार्यालयको लिखित जवाफ",
+          "en": "",
           "ne": ""
         },
         "description": {
@@ -228,11 +217,12 @@ export const timelineGroups = {
       {
         "year": "सदस्य-अध्यक्ष conflict- कीर्ते जालसाजी मुद्दा",
         "title": {
-          "en": "Rupa International को शेयरधनी एवं संचालक हेमन्तराज कोलाक्षपति (वादी) Vs. Hotel Radison मा संचालित Casino Rad का संचालक मनोज प्रसाद सुवेदी (प्रतिवादी)",
+          "en": "",
           "ne": ""
         },
         "description": {
-          "en": "Rupa International को संचालक सदस्य (वादी) ले अर्को संचालक अध्यक्ष (प्रतिवादी) लाई काठमाडौं जिल्ला अदालतमा मिति 2074/1/14 मा 073-PC-3782 को कीर्ते जालसाजी मद्दा दायर गरेको (हालको स्थितिः वादीको दावी नपुग्ने गरी मिति 2075/02/23 मा फैसला भएको छ)",
+          "en": "Rupa International को शेयरधनी एवं संचालक हेमन्तराज कोलाक्षपति (वादी) Vs. Hotel Radison मा संचालित Casino Rad का संचालक मनोज प्रसाद सुवेदी (प्रतिवादी)
+- Rupa International को संचालक सदस्य (वादी) ले अर्को संचालक अध्यक्ष (प्रतिवादी) लाई काठमाडौं जिल्ला अदालतमा मिति 2074/1/14 मा 073-PC-3782 को कीर्ते जालसाजी मद्दा दायर गरेको (हालको स्थितिः वादीको दावी नपुग्ने गरी मिति 2075/02/23 मा फैसला भएको छ)",
           "ne": ""
         },
         "category": "conflict"
@@ -240,5 +230,3 @@ export const timelineGroups = {
     ]
   }
 };
-
-
