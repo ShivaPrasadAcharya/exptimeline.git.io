@@ -1,91 +1,97 @@
 // src/components/timeline/CategoryIcon.jsx
 import React from 'react';
 import { 
-FileSignature, Files, AlertTriangle, 
+  FileSignature, 
+  Files, 
+  AlertTriangle, 
   FileText,
-  Building,
-  Eye,
   Scale,
   HeartHandshake,
-  Laptop,
-  BarChart,
-  HelpCircle
-  } from 'lucide-react';
+  HelpCircle,
+  CircleDollarSign,
+  Bell,
+  Building2,
+  FileWarning,
+  Scroll,
+  Heart
+} from 'lucide-react';
 
 const CategoryIcon = ({ category }) => {
   const iconClass = "w-5 h-5";
   
   const getIconStyle = () => {
     switch (category) {
-     case 'contract':
-  return {
-    icon: FileSignature, // A document with a signature line icon
-    color: 'text-blue-500',
-    bgColor: 'bg-blue-50'
-  };
-
-case 'sub-lease-contract':
-  return {
-    icon: Files, // Stacked documents icon representing related contracts
-    color: 'text-indigo-500',
-    bgColor: 'bg-indigo-50'
-  };
-
-case 'conflict':
-  return {
-    icon: AlertTriangle, // Warning triangle icon suggesting dispute
-    color: 'text-amber-500',
-    bgColor: 'bg-amber-50'
-  };
-
-case 'court':
-  return {
-    icon: Scale, // Justice scale icon representing legal proceedings
-    color: 'text-purple-500',
-    bgColor: 'bg-purple-50'
-  };
- case 'complaint':
+      case 'namaskar':
         return {
-          icon: FileText,
-          color: 'text-red-500',
-          bgColor: 'bg-red-50'
+          icon: HeartHandshake,
+          color: 'text-emerald-500',
+          bgColor: 'bg-emerald-50'
         };
-
-      case 'administration':
+      case 'casino':
         return {
-          icon: Building,
-          color: 'text-blue-500',
-          bgColor: 'bg-blue-50'
-        };
-      case 'monitoring':
-        return {
-          icon: Eye,
-          color: 'text-purple-500',
-          bgColor: 'bg-purple-50'
-        };
-      case 'governance':
-        return {
-          icon: Scale,
+          icon: CircleDollarSign, // Money/casino icon
           color: 'text-green-500',
           bgColor: 'bg-green-50'
         };
-      case 'service':
+      case 'contract':
         return {
-          icon: HeartHandshake,
+          icon: FileSignature, // Document signing icon
+          color: 'text-blue-500',
+          bgColor: 'bg-blue-50'
+        };
+      case 'court':
+        return {
+          icon: Scale, // Justice scale icon
+          color: 'text-purple-500',
+          bgColor: 'bg-purple-50'
+        };
+      case 'circular':
+        return {
+          icon: Scroll, // Official document/circular icon
+          color: 'text-amber-500',
+          bgColor: 'bg-amber-50'
+        };
+      case 'police':
+        return {
+          icon: Building2, // Police station/official building icon
+          color: 'text-slate-500',
+          bgColor: 'bg-slate-50'
+        };
+      case 'notification':
+        return {
+          icon: Bell, // Notification bell icon
           color: 'text-orange-500',
           bgColor: 'bg-orange-50'
         };
-      case 'digital':
+      case 'review':
         return {
-          icon: Laptop,
-          color: 'text-cyan-500',
-          bgColor: 'bg-cyan-50'
+          icon: FileText, // Document review icon
+          color: 'text-indigo-500',
+          bgColor: 'bg-indigo-50'
         };
-      case 'planning':
+      case 'complaint':
         return {
-          icon: BarChart,
-          color: 'text-yellow-500',
-          bgColor: 'bg-yellow-50'
+          icon: FileWarning, // Warning document icon
+          color: 'text-red-500',
+          bgColor: 'bg-red-50'
+        };
+      case 'brokenheart':
+        return {
+          icon: Heart, // Heart icon for broken agreements
+          color: 'text-rose-500',
+          bgColor: 'bg-rose-50'
+        };
+      case 'conflict':
+        return {
+          icon: AlertTriangle, // Warning/conflict icon
+          color: 'text-amber-500',
+          bgColor: 'bg-amber-50'
+        };
+      case 'none':
+        return {
+          icon: Files, // Generic files icon
+          color: 'text-gray-500',
+          bgColor: 'bg-gray-50'
         };
       default:
         return {
