@@ -97,30 +97,6 @@ data:[
     },
     "category": "court"
   },
-{
-    "year": "",
-    "title": {
-      "en": " ",
-      "ne": ""
-    },
-    "description": {
-      "en": "",
-      "ne": ""
-    },
-    "category": "court_order"
-  },
-  {
-    "year": "",
-    "title": {
-      "en": "",
-      "ne": ""
-    },
-    "description": {
-      "en": "",
-      "ne": ""
-    },
-    "category": ""
-  },
   {
     "year": "2074/01/12",
     "title": {
