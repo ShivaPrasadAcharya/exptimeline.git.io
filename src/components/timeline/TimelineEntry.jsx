@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import CategoryIcon from './CategoryIcon';
 import HighlightedText from './HighlightedText';
-
 const TimelineEntry = ({ 
   data, 
   isActive, 
