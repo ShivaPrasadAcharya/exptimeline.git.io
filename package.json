@@ -1,12 +1,12 @@
 {
   "homepage": "https://shivaprasadacharya.github.io/exptimeline.git.io/",
-  "name": "exptimeline",
+  "name": "exp-timeline",
   "private": true,
   "version": "0.1.0",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy":"gh-pages -d dist",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
